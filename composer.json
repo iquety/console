@@ -1,12 +1,12 @@
 {
-    "name": "ricardopedias/freep-console",
+    "name": "iquety/console",
     "type": "tool",
     "description": "Toolkit for implementing PHP-based terminal commands",
-    "keywords": ["framework", "freep", "tool", "console"],
+    "keywords": ["framework", "tool", "console"],
     "license": "MIT",
     "require": {
         "php": "^8.0.0",
-        "ricardopedias/freep-security": "dev-main"
+        "iquety/security": "dev-main"
     },
     "require-dev": {
         "codacy/coverage": "dev-master",
@@ -18,7 +18,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Freep\\Console\\": "src/"
+            "Iquety\\Console\\": "src/"
         }
     },
     "autoload-dev": {

@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace Freep\Console\PhpUnit;
+namespace Iquety\Console\PhpUnit;
 
-use Freep\Console\Command;
-use Freep\Console\Option;
-use Freep\Console\PhpUnit\Constraints\CommandCountOptions;
-use Freep\Console\PhpUnit\Constraints\CommandHasName;
-use Freep\Console\PhpUnit\Constraints\CommandHasDescription;
-use Freep\Console\PhpUnit\Constraints\CommandHasHowToUse;
-use Freep\Console\PhpUnit\Constraints\CommandHasOption;
-use Freep\Console\PhpUnit\Constraints\OptionHasDefaultValue;
-use Freep\Console\PhpUnit\Constraints\OptionHasDescription;
-use Freep\Console\PhpUnit\Constraints\OptionHasLongNotation;
-use Freep\Console\PhpUnit\Constraints\OptionHasShortNotation;
-use Freep\Console\PhpUnit\Constraints\OptionIsBoolean;
-use Freep\Console\PhpUnit\Constraints\OptionIsRequired;
-use Freep\Console\PhpUnit\Constraints\OptionIsValued;
-use Freep\Console\PhpUnit\Constraints\OptionIsNotBoolean;
-use Freep\Console\PhpUnit\Constraints\OptionIsNotRequired;
-use Freep\Console\PhpUnit\Constraints\OptionIsNotValued;
+use Iquety\Console\Command;
+use Iquety\Console\Option;
+use Iquety\Console\PhpUnit\Constraints\CommandCountOptions;
+use Iquety\Console\PhpUnit\Constraints\CommandHasName;
+use Iquety\Console\PhpUnit\Constraints\CommandHasDescription;
+use Iquety\Console\PhpUnit\Constraints\CommandHasHowToUse;
+use Iquety\Console\PhpUnit\Constraints\CommandHasOption;
+use Iquety\Console\PhpUnit\Constraints\OptionHasDefaultValue;
+use Iquety\Console\PhpUnit\Constraints\OptionHasDescription;
+use Iquety\Console\PhpUnit\Constraints\OptionHasLongNotation;
+use Iquety\Console\PhpUnit\Constraints\OptionHasShortNotation;
+use Iquety\Console\PhpUnit\Constraints\OptionIsBoolean;
+use Iquety\Console\PhpUnit\Constraints\OptionIsRequired;
+use Iquety\Console\PhpUnit\Constraints\OptionIsValued;
+use Iquety\Console\PhpUnit\Constraints\OptionIsNotBoolean;
+use Iquety\Console\PhpUnit\Constraints\OptionIsNotRequired;
+use Iquety\Console\PhpUnit\Constraints\OptionIsNotValued;
 use PHPUnit\Framework\TestCase;
 
 /**

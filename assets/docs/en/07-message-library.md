@@ -6,7 +6,7 @@
 
 In addition to the exclusive functionality for creating and executing commands, freep-console contains a dedicated class for displaying messages in the terminal.
 
-Below are the methods available in the `Freep\Console\Message` class:
+Below are the methods available in the `Iquety\Console\Message` class:
 
 ```php
 $message = new Message('thundercats');

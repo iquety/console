@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\PhpUnit;
 
-use Freep\Console\Option;
-use Freep\Console\PhpUnit\Constraints\OptionHasShortNotation;
+use Iquety\Console\Option;
+use Iquety\Console\PhpUnit\Constraints\OptionHasShortNotation;
 use PHPUnit\Framework\ExpectationFailedException;
 
 class OptionHasShortNotationTest extends ConstraintTestCase

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\PhpUnit;
 
-use Freep\Console\Command;
-use Freep\Console\PhpUnit\Constraints\CommandHasHowToUse;
+use Iquety\Console\Command;
+use Iquety\Console\PhpUnit\Constraints\CommandHasHowToUse;
 use PHPUnit\Framework\ExpectationFailedException;
 
 class CommandHasHowToUseTest extends ConstraintTestCase

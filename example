@@ -19,7 +19,7 @@ include __DIR__ . "/vendor/autoload.php";
  * Licença: MIT
  */
 
-use Freep\Console\Terminal;
+use Iquety\Console\Terminal;
 
 // Remove o primeiro argumento do usuário contendo o nome do script (./example)
 array_shift($argv);

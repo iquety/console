@@ -4,7 +4,7 @@
 
 ## 1. Implement commands
 
-The first thing to do is create the necessary commands and place them in some directory. A command must be implemented based on the abstract class `Freep\Console\Command`, as shown in the example below:
+The first thing to do is create the necessary commands and place them in some directory. A command must be implemented based on the abstract class `Iquety\Console\Command`, as shown in the example below:
 
 ```php
 class SayHello extends Command
@@ -71,7 +71,7 @@ More information at [Creating Commands](04-creating-commands.md).
 
 ## 2. Criando o terminal
 
-With the commands implemented in the desired directory, it is necessary to create an instance of `Freep\Console\Terminal` and tell it which directories contain the implemented commands.
+With the commands implemented in the desired directory, it is necessary to create an instance of `Iquety\Console\Terminal` and tell it which directories contain the implemented commands.
 
 Finally, just tell the Terminal to execute the commands through the `Terminal->run()` method:
 

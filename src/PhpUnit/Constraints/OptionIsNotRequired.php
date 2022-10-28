@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Freep\Console\PhpUnit\Constraints;
+namespace Iquety\Console\PhpUnit\Constraints;
 
-use Freep\Console\Option;
+use Iquety\Console\Option;
 
 class OptionIsNotRequired extends OptionIsRequired
 {

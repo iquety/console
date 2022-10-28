@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tests;
 
 use Closure;
-use Freep\Console\Message;
+use Iquety\Console\Message;
 use PHPUnit\Framework\TestCase;
 
 /** @SuppressWarnings(PHPMD.TooManyPublicMethods) */

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests;
 
-use Freep\Console\Commands\Help;
-use Freep\Console\Terminal;
+use Iquety\Console\Commands\Help;
+use Iquety\Console\Terminal;
 
 class TerminalHelpTest extends TestCase
 {

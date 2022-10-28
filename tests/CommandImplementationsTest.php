@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Tests;
 
-use Freep\Console\Arguments;
-use Freep\Console\Command;
-use Freep\Console\Option;
+use Iquety\Console\Arguments;
+use Iquety\Console\Command;
+use Iquety\Console\Option;
 use InvalidArgumentException;
 use RuntimeException;
 

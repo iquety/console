@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Tests\FakeApp\ContextOne\src\Commands;
 
 use Exception;
-use Freep\Console\Arguments;
-use Freep\Console\Command;
+use Iquety\Console\Arguments;
+use Iquety\Console\Command;
 
 /** @SuppressWarnings(PHPMD.UnusedFormalParameter) */
 class ExampleException extends Command

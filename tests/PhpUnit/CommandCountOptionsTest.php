@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\PhpUnit;
 
-use Freep\Console\Command;
-use Freep\Console\PhpUnit\Constraints\CommandCountOptions;
+use Iquety\Console\Command;
+use Iquety\Console\PhpUnit\Constraints\CommandCountOptions;
 use PHPUnit\Framework\ExpectationFailedException;
 
 class CommandCountOptionsTest extends ConstraintTestCase

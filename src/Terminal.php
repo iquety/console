@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Freep\Console;
+namespace Iquety\Console;
 
-use Freep\Console\Commands\Help;
-use Freep\Security\Filesystem;
-use Freep\Security\Path;
+use Iquety\Console\Commands\Help;
+use Iquety\Security\Filesystem;
+use Iquety\Security\Path;
 use InvalidArgumentException;
 use RuntimeException;
 use Throwable;

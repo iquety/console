@@ -5,7 +5,7 @@
 
 ## 1. Implementar comandos
 
-A primeira coisa a fazer é criar os comandos necessários e alocá-los em algum diretório. Um comando deve ser implementado com base na classe abstrata `Freep\Console\Command`, conforme o exemplo abaixo:.
+A primeira coisa a fazer é criar os comandos necessários e alocá-los em algum diretório. Um comando deve ser implementado com base na classe abstrata `Iquety\Console\Command`, conforme o exemplo abaixo:.
 
 ```php
 class DizerOla extends Command
@@ -72,7 +72,7 @@ Mais informações em [Criando Comandos](04-criando-comandos.md).
 
 ## 2. Criando o terminal
 
-Com os comandos implementados no diretório desejado, é preciso criar uma instância de `Freep\Console\Terminal` e dizer para ela quais são os diretórios contendo os comandos implementados.
+Com os comandos implementados no diretório desejado, é preciso criar uma instância de `Iquety\Console\Terminal` e dizer para ela quais são os diretórios contendo os comandos implementados.
 
 Por fim, basta mandar o Terminal executar os comandos através do método `Terminal->executar()`:
 

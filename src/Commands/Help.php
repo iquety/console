@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Freep\Console\Commands;
+namespace Iquety\Console\Commands;
 
-use Freep\Console\Arguments;
-use Freep\Console\Command;
+use Iquety\Console\Arguments;
+use Iquety\Console\Command;
 use RuntimeException;
 
 class Help extends Command
