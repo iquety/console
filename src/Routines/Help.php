@@ -43,9 +43,11 @@ class Help extends Routine
         $routineList = $this->getTerminal()->getRoutineList();
 
         foreach ($routineList as $routineFile) {
+            /** @var Routine */
             $routineClassName = $this->getTerminal()->parseClassName($routineFile);
 
             $routineObject = (new $routineClassName($this->getTerminal()));
+
             $list[] = $routineObject;
         }
 

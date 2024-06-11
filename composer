@@ -23,5 +23,17 @@ if [ "$1" == "lint" ]; then
     exit;
 fi
 
+if [ "$1" == "install" ]; then
+    docker exec -it $PHP_CONTAINER /bin/bash -c "COMPOSER_ROOT_VERSION=2.0.0 composer install"
+
+    exit;
+fi
+
+if [ "$1" == "update" ]; then
+    docker exec -it $PHP_CONTAINER /bin/bash -c "COMPOSER_ROOT_VERSION=2.0.0 composer update"
+
+    exit;
+fi
+
 docker exec -it $PHP_CONTAINER \
     composer $@

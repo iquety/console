@@ -13,7 +13,7 @@
 Este repositório contém as funcionalidades necessárias para implementar um gerenciador de comandos para terminal em uma aplicação PHP de forma fácil.
 
 ```bash
-composer require ricardopedias/freep-console
+composer require iquety/console
 ```
 
 Para informações detalhadas, consulte o [Sumário da Documentação](indice.md).
@@ -53,8 +53,8 @@ include __DIR__ . "/vendor/autoload.php";
 
 array_shift($argv);
 
-$terminal = new Iquety\Console\Terminal("/diretorio/da/super/aplicacao");
-$terminal->loadRoutinesFrom("/diretorio/de/comandos");
+$terminal = new Iquety\Console\Terminal('/diretorio/real/da/aplicacao');
+$terminal->loadRoutinesFrom('/diretorio/de/comandos');
 $terminal->run($argv);
 ```
 

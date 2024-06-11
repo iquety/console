@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace Tests\FakeApp\ContextTwo;
-
 // namespace inválido de propósito
+namespace Tests\FakeApp\ContextTwo;
 
 use Iquety\Console\Arguments;
 use Iquety\Console\Routine;

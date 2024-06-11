@@ -6,12 +6,12 @@ include __DIR__ . "/vendor/autoload.php";
 /**
  * ./example - Script para linha de comando
  *
- * Site: https://github.com/ricardopedias/freep-console
+ * Site: https://github.com/iquety/console
  * Autor: Ricardo Pereira <contato@ricardopedias.com.br>
  * 
  * ------------------------------------------------------------------------------
  * Este programa é um exemplo de utilização da linha de comando implementada 
- * com a biblioteca freep-console.
+ * com a biblioteca iquety/console.
  *
  * Para informações sobre os comandos disponíveis, use o comando:
  * $ ./example --help
@@ -24,7 +24,7 @@ use Iquety\Console\Terminal;
 // Remove o primeiro argumento do usuário contendo o nome do script (./example)
 array_shift($argv);
 
-$terminal = new Terminal(__DIR__ . "/codigo");
+$terminal = new Terminal('/diretorio/real/da/aplicacao');
 $terminal->setHowToUse("./example routine [options] [arguments]");
 $terminal->loadRoutinesFrom(__DIR__ . "/tests/FakeApp/ContextOne/src/Routines");
 $terminal->loadRoutinesFrom(__DIR__ . "/tests/FakeApp/ContextTwo");
