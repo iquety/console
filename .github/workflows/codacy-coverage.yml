@@ -15,7 +15,7 @@ jobs:
           extensions: curl, mbstring, xdebug
           tools: composer:v2
 
-      - run: composer update --no-progress
+      - run: COMPOSER_ROOT_VERSION=2.0.0 composer update --no-progress
       - run: vendor/bin/phpunit --coverage-clover clover.xml
 
       - name: Run codacy-coverage-reporter
