@@ -12,21 +12,21 @@ As opções são especificadas dentro do método abstrato `Routine->initialize()
 ```php
 class DizerOla extends Routine
 {
-protected function initialize(): void
-{
-// ...
+    protected function initialize(): void
+    {
+        // ...
 
-$this->addOption(
-new Option(
-'-l',
-'--ler-arquivo',
-'Lê a mensagem a partir de um arquivo texto',
-Option::REQUIRED | Option::VALUED
-)
-);
-}
+        $this->addOption(
+            new Option(
+                '-l',
+                '--ler-arquivo',
+                'Lê a mensagem a partir de um arquivo texto',
+                Option::REQUIRED | Option::VALUED
+            )
+        );
+    }
 
-// ...
+    // ...
 }
 ```
 
@@ -43,13 +43,13 @@ Por exemplo, se o usuário especificar o seguinte comando:
 ```php
 class DizerOla extends Routine
 {
-// ...
+    // ...
 
-protected function handle(Arguments $arguments): void
-{
-$this->info($arguments->getOption('-l'));
-//  isso exibirá === '1'
-}
+    protected function handle(Arguments $arguments): void
+    {
+        $this->info($arguments->getOption('-l'));
+        //  isso exibirá === '1'
+    }
 }
 ```
 
@@ -78,10 +78,10 @@ Uma **opção obrigatória** deve ser especificada pelo usuário. Caso contrári
 
 ```php
 new Option(
-'-l',
-'--ler-arquivo',
-'Lê a mensagem a partir de um arquivo texto',
-Option::REQUIRED
+    '-l',
+    '--ler-arquivo',
+    'Lê a mensagem a partir de um arquivo texto',
+    Option::REQUIRED
 )
 ```
 
@@ -91,10 +91,10 @@ Uma **opção opcional** pode ser ignorada, ficando a critério do usuario a esp
 
 ```php
 new Option(
-'-l',
-'--ler-arquivo',
-'Lê a mensagem a partir de um arquivo texto',
-Option::OPTIONAL
+    '-l',
+    '--ler-arquivo',
+    'Lê a mensagem a partir de um arquivo texto',
+    Option::OPTIONAL
 )
 ```
 
@@ -104,19 +104,19 @@ Uma **opção valorada** exigirá que, após sua chave, o usuário especifique u
 
 ```php
 new Option(
-'-l',
-'--ler-arquivo',
-'Lê a mensagem a partir de um arquivo texto',
-Opcao::OPCIONAL | Opcao::COM_VALOR
+    '-l',
+    '--ler-arquivo',
+    'Lê a mensagem a partir de um arquivo texto',
+    Opcao::OPCIONAL | Opcao::COM_VALOR
 )
 ```
 
 ```php
 new Option(
-'-l',
-'--ler-arquivo',
-'Lê a mensagem a partir de um arquivo texto',
-Opcao::REQUIRED | Opcao::COM_VALOR
+    '-l',
+    '--ler-arquivo',
+    'Lê a mensagem a partir de um arquivo texto',
+    Opcao::REQUIRED | Opcao::COM_VALOR
 )
 ```
 
@@ -132,10 +132,10 @@ Uma **opção booleana** é aquela que não exige um valor após a declaração 
 
 ```php
 new Option(
-'-l',
-'--ler-arquivo',
-'Lê a mensagem a partir de um arquivo texto',
-Option::OPTIONAL
+    '-l',
+    '--ler-arquivo',
+    'Lê a mensagem a partir de um arquivo texto',
+    Option::OPTIONAL
 )
 ```
 
@@ -145,11 +145,11 @@ O valor que a opção passará para o comando, caso o usuário não especifique 
 
 ```php
 new Option(
-'-l',
-'--ler-arquivo',
-'Lê a mensagem a partir de um arquivo texto',
-Option::REQUIRED | Option::VALUED,
-"mensagem.txt"
+    '-l',
+    '--ler-arquivo',
+    'Lê a mensagem a partir de um arquivo texto',
+    Option::REQUIRED | Option::VALUED,
+    "mensagem.txt"
 )
 ```
 

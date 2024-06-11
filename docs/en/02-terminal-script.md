@@ -18,8 +18,8 @@ include __DIR__ . "/vendor/autoload.php";
 
 use Iquety\Console\Terminal;
 
-// PHP in CLI mode provides the reserved variable "$argv", containing the list
-// of words typed by the user in the Terminal. This variable will be used to
+// PHP in CLI mode provides the reserved variable "$argv", containing the list 
+// of words typed by the user in the Terminal. This variable will be used to 
 // pass the information to the library's Terminal.
 
 // Removes the first argument, which contains the script name (ex: ./example)

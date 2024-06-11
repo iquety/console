@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7868ada8ba5d56202df98e34b696b5c0",
+    "content-hash": "5c96d406185f2e8b16c01654d92fbf0b",
     "packages": [
         {
             "name": "iquety/security",
@@ -387,7 +387,7 @@
         },
         {
             "name": "iquety/docmap",
-            "version": "v2.0.1",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/iquety/docmap.git",
@@ -410,6 +410,7 @@
                 "phpunit/phpunit": "^9",
                 "squizlabs/php_codesniffer": "3.*"
             },
+            "default-branch": true,
             "bin": [
                 "docmap"
             ],
@@ -3665,7 +3666,8 @@
     "stability-flags": {
         "iquety/security": 20,
         "codacy/coverage": 20,
-        "phpmd/phpmd": 0
+        "phpmd/phpmd": 0,
+        "iquety/docmap": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

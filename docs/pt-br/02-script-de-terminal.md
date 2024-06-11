@@ -18,7 +18,7 @@ include __DIR__ . "/vendor/autoload.php";
 
 use Iquety\Console\Terminal;
 
-// O PHP em modo CLI disponibiliza a variável reservada "$argv", contendo a lista
+// O PHP em modo CLI disponibiliza a variável reservada "$argv", contendo a lista 
 // de palavras digitadas pelo usuário no Terminal. Esta variável será usada para
 // passar as informações ao Terminal da biblioteca.
 

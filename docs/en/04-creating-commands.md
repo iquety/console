@@ -10,9 +10,9 @@ All routines must be implemented based on the abstract class `Iquety\Console\Rou
 ```php
 abstract class Routine
 {
-abstract protected function initialize(): void;
+    abstract protected function initialize(): void;
 
-abstract protected function handle(Arguments $arguments): void;
+    abstract protected function handle(Arguments $arguments): void;
 }
 ```
 
@@ -27,14 +27,14 @@ A minimal implementation must contain at least the `"Routine->setName()"` method
 ```php
 class MyRoutine extends Routine
 {
-protected function initialize(): void
-{
-$this->setName("my-routine");
+    protected function initialize(): void
+    {
+        $this->setName("my-routine");
 
-// other routine settings
-}
+        // other routine settings
+    }
 
-//...
+    //...
 }
 ```
 
@@ -72,10 +72,10 @@ More information about options in [Implementing options](05-implementing-options
 
 ```php
 $this->addOption(new Option(
-'-d',
-'--delete',
-'Delete the text file after using it',
-Option::OPTIONAL
+    '-d',
+    '--delete',
+    'Delete the text file after using it',
+    Option::OPTIONAL
 ));
 ```
 
@@ -90,16 +90,16 @@ In this method, it is possible to interact with the user and obtain information 
 ```php
 class MyRoutine extends Routine
 {
-// ...
+    // ...
 
-protected function handle(Arguments $arguments): void
-{
-// routine routine implementation
+    protected function handle(Arguments $arguments): void
+    {
+        // routine routine implementation
 
-$this->info('Routine executed successfully');
-}
+        $this->info('Routine executed successfully');
+    }
 
-//...
+    //...
 }
 ```
 
