@@ -5,10 +5,10 @@
 
 ## 1. Sobre um comando
 
-Todos os comandos devem ser implementados com base na classe abstrata `Iquety\Console\Command`:
+Todos os comandos devem ser implementados com base na classe abstrata `Iquety\Console\Routine`:
 
 ```php
-abstract class Command
+abstract class Routine
 {
 abstract protected function initialize(): void;
 
@@ -20,12 +20,12 @@ abstract protected function handle(Arguments $arguments): void;
 
 ### 2.1. Sobre
 
-No método `"Command->inicializar()"` devem ser implementadas as configurações do comando, como o nome, a mensagem de ajuda, as opções, etc.
+No método `"Routine->inicializar()"` devem ser implementadas as configurações do comando, como o nome, a mensagem de ajuda, as opções, etc.
 
-Uma implementação mínima deve conter ao menos o método `"Command->setarNome()"`, que fornece o nome do comando.
+Uma implementação mínima deve conter ao menos o método `"Routine->setarNome()"`, que fornece o nome do comando.
 
 ```php
-class MeuComando extends Command
+class MeuComando extends Routine
 {
 protected function initialize(): void
 {
@@ -83,13 +83,13 @@ Option::OPTIONAL
 
 ### 3.1. Sobre
 
-Da mesma forma, o método `"Command->handle()"` deve ser implementado em todos os comandos. É neste método que a rotina do comando deverá ser implementada.
+Da mesma forma, o método `"Routine->handle()"` deve ser implementado em todos os comandos. É neste método que a rotina do comando deverá ser implementada.
 
 Neste método, é possível interagir com o usuário e obter informações sobre o que
 ele forneceu como argumentos ao invocar o comando.
 
 ```php
-class MeuComando extends Command
+class MeuComando extends Routine
 {
 // ...
 
@@ -127,7 +127,7 @@ echo $this->getAppPath('console/php');
 
 ### 3.4. Emitir uma mensagem
 
-As mensagens são disparadas diretamente por métodos já existentes na classe abstrata `Iquety\Console\Command`.
+As mensagens são disparadas diretamente por métodos já existentes na classe abstrata `Iquety\Console\Routine`.
 Por baixo dos panos, a classe `Iquety\Console\Message` é usada para esse trabalho.
 Mais informações sobre sua utilidade pode ser consultada em [Biblioteca de mensagens](08-biblioteca-de-mensagens.md).
 
@@ -169,7 +169,7 @@ Para identificar as opções fornecidas pelo usuário no terminal, usa-se o obje
 `Iquety\Console\Arguments`, que fornece acesso às opções, valores e argumentos
 especificados.
 
-Este objeto é disponibilizado como argumento do método `"Command->handle()"`.
+Este objeto é disponibilizado como argumento do método `"Routine->handle()"`.
 
 Mais informações sobre argumentos em [Usando os Argumentos](06-usando-os-argumentos.md).
 

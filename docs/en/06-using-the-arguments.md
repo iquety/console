@@ -5,23 +5,23 @@
 
 ## 1. The Arguments object
 
-The Arguments object is created by the command parser, after scanning the options provided by the user.
+The Arguments object is created by the routine parser, after scanning the options provided by the user.
 
 It contains all the options typed in the terminal, organized according to their context.
 
-Consider the following command typed in the terminal:
+Consider the following routine typed in the terminal:
 
 ```bash
 ./example say-hello -n "Ricardo Pereira" --book "Arquitetura Limpa" Test 'Portas e Adaptadores' --dev
 ```
 
-The interpreter will send to the `Command->handle()` method, an `Arguments` object, where options can be obtained to implement the command routine.
+The interpreter will send to the `Routine->handle()` method, an `Arguments` object, where options can be obtained to implement the routine routine.
 
 There are two types of arguments:
 
 ### 1.1. Argument with flag
 
-These are the option values determined within the abstract method `Command->initialize()` via the `Command->addOption()` method.
+These are the option values determined within the abstract method `Routine->initialize()` via the `Routine->addOption()` method.
 
 For example:
 
@@ -30,7 +30,7 @@ For example:
 ```
 
 ```php
-class SayHello extends Command
+class SayHello extends Routine
 {
 // ...
 
@@ -50,7 +50,7 @@ $this->info($arguments->getOption('-d'));
 
 ### 1.2. Standalone argument
 
-These are single values, specified within the command line.
+These are single values, specified within the routine line.
 These values do not belong to any valid options.
 
 For example:
@@ -60,7 +60,7 @@ For example:
 ```
 
 ```php
-class SayHello extends Command
+class SayHello extends Routine
 {
 // ...
 

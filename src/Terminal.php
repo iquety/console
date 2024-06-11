@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Iquety\Console;
 
-use Iquety\Console\Commands\Help;
+use Iquety\Console\Routines\Help;
 use Iquety\Security\Filesystem;
 use Iquety\Security\Path;
 use InvalidArgumentException;
@@ -18,7 +18,7 @@ class Terminal
     /** @var array<string> */
     private array $directoryList = [];
 
-    private string $executedCommand = "no";
+    private string $executedRoutine = "no";
 
     private string $howToUse = "";
 
@@ -32,7 +32,7 @@ class Terminal
 
         $this->appPath = $realPath;
 
-        $this->loadCommandsFrom(__DIR__ . '/Commands');
+        $this->loadRoutinesFrom(__DIR__ . '/Routines');
     }
 
     public function factoryMessage(string $message): Message
@@ -60,15 +60,16 @@ class Terminal
         return $this->appPath;
     }
 
-    public function loadCommandsFrom(string $commandsPath): self
+    public function loadRoutinesFrom(string $routinesPath): self
     {
         try {
-            $realPath = (new Path($commandsPath))->getAbsolutePath();
+            $realPath = (new Path($routinesPath))->getAbsolutePath();
         } catch (RuntimeException) {
-            throw new InvalidArgumentException("The directory specified for commands does not exist");
+            throw new InvalidArgumentException("The directory specified for routines does not exist");
         }
 
         $this->directoryList[] = $realPath;
+
         return $this;
     }
 
@@ -85,20 +86,21 @@ class Terminal
             $arguments[0] = "help";
         }
 
-        $commandName = array_shift($arguments);
+        $routineName = array_shift($arguments);
 
         try {
-            $this->runCommand($commandName, $arguments);
+            $this->runRoutine($routineName, $arguments);
         } catch (Throwable $e) {
             $this->factoryMessage($e->getFile() . " on line " . $e->getLine())->error();
+
             $this->factoryMessage("   " . $e->getMessage())->red();
         }
     }
 
     /** @return array<int,string> */
-    public function getCommandList(): array
+    public function getRoutineList(): array
     {
-        $allCommands = [];
+        $allRoutines = [];
 
         foreach ($this->directoryList as $path) {
             $fileList = array_map(
@@ -106,51 +108,56 @@ class Terminal
                 $this->filesystem($path)->getDirectoryFiles('/')
             );
 
-            $allCommands = array_merge(
-                $allCommands,
+            $allRoutines = array_merge(
+                $allRoutines,
                 $fileList
             );
         }
 
-        return $allCommands;
+        return $allRoutines;
     }
 
     /**
      * @param array<int,string> $arguments
      */
-    public function runCommand(string $name, array $arguments): void
+    public function runRoutine(string $name, array $arguments): void
     {
-        $commandName = $this->normalizeCommandName($name);
+        $routineName = $this->normalizeRoutineName($name);
 
-        $allCommands = $this->getCommandList();
+        $allRoutines = $this->getRoutineList();
 
-        if ($commandName === "Help") {
+        if ($routineName === "Help") {
             (new Help($this))->run($arguments);
-            $this->executedCommand = Help::class;
+
+            $this->executedRoutine = Help::class;
             return;
         }
 
-        foreach ($allCommands as $commandFile) {
-            $commandClassName = $this->parseClassName($commandFile);
+        foreach ($allRoutines as $routineFile) {
+            $routineClassName = $this->parseClassName($routineFile);
 
-            if (class_exists($commandClassName) === false) {
+            if (class_exists($routineClassName) === false) {
                 throw new RuntimeException(
-                    "The file '$commandFile' not contains a '$commandClassName' class"
+                    "The file '$routineFile' not contains a '$routineClassName' class"
                 );
             }
 
-            /** @var Command $commandObject */
-            $commandObject = (new $commandClassName($this));
-            if ($commandName !== $this->normalizeCommandName($commandObject->getName())) {
+            /** @var Routine $routineObject */
+            $routineObject = (new $routineClassName($this));
+
+            if ($routineName !== $this->normalizeRoutineName($routineObject->getName())) {
                 continue;
             }
 
-            $commandObject->run($arguments);
-            $this->executedCommand = $commandClassName;
+            $routineObject->run($arguments);
+
+            $this->executedRoutine = $routineClassName;
+
             return;
         }
 
-        $this->factoryMessage("'{$name}' command not found")->error();
+        $this->factoryMessage("'{$name}' routine not found")->error();
+
         (new Help($this))->run($arguments);
     }
 
@@ -177,18 +184,18 @@ class Terminal
         throw new RuntimeException("Unable to extract namespace from file '{$oneFile}'");
     }
 
-    private function extractClassName(string $commandFile): string
+    private function extractClassName(string $routineFile): string
     {
-        return str_replace('.php', '', array_slice(explode("/", $commandFile), -1)[0]);
+        return str_replace('.php', '', array_slice(explode("/", $routineFile), -1)[0]);
     }
 
-    public function parseClassName(string $commandFile): string
+    public function parseClassName(string $routineFile): string
     {
-        return $this->extractNamespace($commandFile)
-            . "\\" . $this->extractClassName($commandFile);
+        return $this->extractNamespace($routineFile)
+            . "\\" . $this->extractClassName($routineFile);
     }
 
-    private function normalizeCommandName(string $kebabCaseName): string
+    private function normalizeRoutineName(string $kebabCaseName): string
     {
         // make:user-controller -> [Make, User-controller]
         $kebabCase = array_map(
@@ -207,8 +214,8 @@ class Terminal
         return implode("", $pascalCase); // MakeUserController
     }
 
-    public function executedCommand(): string
+    public function executedRoutine(): string
     {
-        return $this->executedCommand;
+        return $this->executedRoutine;
     }
 }

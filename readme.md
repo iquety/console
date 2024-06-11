@@ -10,7 +10,7 @@
 
 ## Synopsis
 
-This repository contains the necessary functionality to easily implement a terminal command manager in a PHP application.
+This repository contains the necessary functionality to easily implement a terminal routine manager in a PHP application.
 
 ```bash
 composer require iquety/console
@@ -20,16 +20,16 @@ For detailed information, see [Documentation Summary](docs/en/index.md).
 
 ## How to use
 
-### 1. Create a command
+### 1. Create a routine
 
-Implement a command called "my-command", based on the abstract class `Iquety\Console\Command`:
+Implement a routine called "my-routine", based on the abstract class `Iquety\Console\Routine`:
 
 ```php
-class MyCommand extends Command
+class MyRoutine extends Routine
 {
     protected function initialize(): void
     {
-        $this->setName("my-command");
+        $this->setName("my-routine");
         $this->addOption(
             new Option('-r', '--read', 'Read a text file', Option::REQUIRED)
         );
@@ -54,29 +54,29 @@ include __DIR__ . "/vendor/autoload.php";
 array_shift($argv);
 
 $terminal = new Iquety\Console\Terminal("/root/of/super/application");
-$terminal->loadCommandsFrom("/directory/of/commands");
+$terminal->loadRoutinesFrom("/directory/of/routines");
 $terminal->run($argv);
 ```
 
 ### 3. Run the script
 
 ```bash
-./myconsole my-command -r
+./myconsole my-routine -r
 # will display: Hello
 ```
 
 ```bash
-./myconsole my-command --help
+./myconsole my-routine --help
 # will display:
 #
-# Command: my-command
-# Run the 'my-command' command
+# Routine: my-routine
+# Run the 'my-routine' routine
 # 
 # How to use:
-# ./myconsole my-command [options]
+# ./myconsole my-routine [options]
 # 
 # Options:
-# -h, --help   Display command help
+# -h, --help   Display routine help
 # -r, --read   Read a text file
 ```
 
@@ -85,14 +85,14 @@ $terminal->run($argv);
 # will display:
 #
 # How to use:
-# ./myconsole command [options] [arguments]
+# ./myconsole routine [options] [arguments]
 # 
 # Options:
-# -h, --help   Display command help
+# -h, --help   Display routine help
 #
-# Available commands:
-# help           Display command help
-# my-command     Run the 'my-command' command
+# Available routines:
+# help           Display routine help
+# my-routine     Run the 'my-routine' routine
 ```
 
 ## Characteristics

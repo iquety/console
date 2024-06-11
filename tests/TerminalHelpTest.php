@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests;
 
-use Iquety\Console\Commands\Help;
+use Iquety\Console\Routines\Help;
 use Iquety\Console\Terminal;
 
 class TerminalHelpTest extends TestCase
@@ -14,35 +14,35 @@ class TerminalHelpTest extends TestCase
     {
         return [
             "How to use:",
-            "./example command [options] [arguments]",
+            "./example routine [options] [arguments]",
 
             "Options:",
             "-h, --help",
             "Display help information",
 
-            "Available commands:",
+            "Available routines:",
             "help",
             "Display help information",
             "example-exception",
-            "Run the 'example-exception' command",
+            "Run the 'example-exception' routine",
             "example1",
-            "Run the 'example1' command",
-            "very-very-very-more-very-long-command",
-            "Run the 'example2' command"
+            "Run the 'example1' routine",
+            "very-very-very-more-very-long-routine",
+            "Run the 'example2' routine"
         ];
     }
 
     /** @return array<int,string> */
-    private function commandHelpMessageLines(): array
+    private function routineHelpMessageLines(): array
     {
         return [
-            "Command: example1",
-            "Run the 'example1' command",
+            "Routine: example1",
+            "Run the 'example1' routine",
             "How to use:",
             "./example example1 [options]",
             "Options:",
             "-h, --help",
-            "Display command help",
+            "Display routine help",
             "-v, --very-very-very-more-very-long-option",
             "Descricao opcao 1"
         ];
@@ -73,7 +73,7 @@ class TerminalHelpTest extends TestCase
             fn(Terminal $terminal) => $terminal->run([ "-h" ])
         );
 
-        $this->assertEquals(Help::class, $terminal->executedCommand());
+        $this->assertEquals(Help::class, $terminal->executedRoutine());
 
         foreach ($this->helpMessageLines() as $texto) {
             $this->assertStringContainsString($texto, $result);
@@ -81,7 +81,7 @@ class TerminalHelpTest extends TestCase
     }
 
     /** @test */
-    public function longHelpOptionFromCommand(): void
+    public function longHelpOptionFromRoutine(): void
     {
         $terminal = $this->terminalFactory();
 
@@ -90,7 +90,7 @@ class TerminalHelpTest extends TestCase
             fn(Terminal $terminal) => $terminal->run([ "example1", "--help" ])
         );
 
-        foreach ($this->commandHelpMessageLines() as $texto) {
+        foreach ($this->routineHelpMessageLines() as $texto) {
             $this->assertStringContainsString($texto, $result);
         }
 
@@ -102,7 +102,7 @@ class TerminalHelpTest extends TestCase
     }
 
     /** @test */
-    public function shortHelpOptionFromCommand(): void
+    public function shortHelpOptionFromRoutine(): void
     {
         $terminal = $this->terminalFactory();
 
@@ -111,13 +111,13 @@ class TerminalHelpTest extends TestCase
             fn(Terminal $terminal) => $terminal->run([ "example1", "-h" ])
         );
 
-        foreach ($this->commandHelpMessageLines() as $texto) {
+        foreach ($this->routineHelpMessageLines() as $texto) {
             $this->assertStringContainsString($texto, $result);
         }
     }
 
     /** @test */
-    public function helpCommand(): void
+    public function helpRoutine(): void
     {
         $terminal = $this->terminalFactory();
 
@@ -126,7 +126,7 @@ class TerminalHelpTest extends TestCase
             fn(Terminal $terminal) => $terminal->run([ "help" ])
         );
 
-        $this->assertEquals(Help::class, $terminal->executedCommand());
+        $this->assertEquals(Help::class, $terminal->executedRoutine());
 
         foreach ($this->helpMessageLines() as $texto) {
             $this->assertStringContainsString($texto, $result);

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tests\PhpUnit;
 
 use Iquety\Console\Arguments;
-use Iquety\Console\Command;
+use Iquety\Console\Routine;
 use Iquety\Console\Option;
 use PHPUnit\Framework\TestFailure;
 use Tests\TestCase;
@@ -19,13 +19,13 @@ class ConstraintTestCase extends TestCase
     /**
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    protected function commandFactory(): Command
+    protected function routineFactory(): Routine
     {
-        return new class ($this->terminalFactory()) extends Command {
+        return new class ($this->terminalFactory()) extends Routine {
             protected function initialize(): void
             {
-                $this->setName('command-name');
-                $this->setDescription('command description');
+                $this->setName('routine-name');
+                $this->setDescription('routine description');
                 $this->setHowToUse('how to use description');
 
                 // Por padrao, um comando tem uma opcao '-h' pré adicioada

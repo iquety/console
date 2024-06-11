@@ -1,16 +1,16 @@
 # Implementing Options
 
-[◂ Creating Commands](04-creating-commands.md) | [Documentation Summary](index.md) | [Using arguments ▸](06-using-the-arguments.md)
+[◂ Creating Routines](04-creating-commands.md) | [Documentation Summary](index.md) | [Using arguments ▸](06-using-the-arguments.md)
 -- | -- | --
 
 ## 1. About options
 
-Options are the 'icing on the cake' in one command. They allow you to control what the user can do when invoking a routine.
+Options are the 'icing on the cake' in one routine. They allow you to control what the user can do when invoking a routine.
 
-Options are specified within the abstract method `Command->initialize()` via the `Command->addOption()` method.
+Options are specified within the abstract method `Routine->initialize()` via the `Routine->addOption()` method.
 
 ```php
-class SayHello extends Command
+class SayHello extends Routine
 {
 protected function initialize(): void
 {
@@ -30,9 +30,9 @@ Option::REQUIRED | Option::VALUED
 }
 ```
 
-When an option is added (as in the example above), it is possible to get its corresponding value inside `Command->handle()`, using the `Arguments::getOption()` method.
+When an option is added (as in the example above), it is possible to get its corresponding value inside `Routine->handle()`, using the `Arguments::getOption()` method.
 
-For example, if the user specifies the following command:
+For example, if the user specifies the following routine:
 
 ```bash
 ./example say-hello --read
@@ -41,7 +41,7 @@ For example, if the user specifies the following command:
 > **Important:** All values obtained by the Arguments object will be of type "string". More information at [Using the arguments](06-using-the-arguments.md)
 
 ```php
-class SayHello extends Command
+class SayHello extends Routine
 {
 // ...
 
@@ -59,7 +59,7 @@ To create a new option, you can use up to 5 arguments:
 
 ### 2.1. Short Notation and Long Notation
 
-These are the keys used to interact with a command. The short must begin with a dash (`-r`) and the long one with two dashes (`--read`).
+These are the keys used to interact with a routine. The short must begin with a dash (`-r`) and the long one with two dashes (`--read`).
 
 At least one of the two notations must be provided by the user to activate the option.
 
@@ -69,7 +69,7 @@ It is an explanatory sentence about the purpose of the option. It will be used t
 
 ### 2.3. Type
 
-It is the way the option will behave in the command formulation.
+It is the way the option will behave in the routine formulation.
 An option can be of four types:
 
 #### 2.3.1. Required
@@ -120,7 +120,7 @@ Option::REQUIRED | Option::VALUED
 )
 ```
 
-In the above cases, the user must specify the command in the following format:
+In the above cases, the user must specify the routine in the following format:
 
 ```bash
 ./example say-hello --read "message.txt"
@@ -141,7 +141,7 @@ Option::OPTIONAL
 
 ### 2.4. Default value
 
-The value that the option will pass to the command if the user does not specify any. This argument is optional and only works with "valued" options.
+The value that the option will pass to the routine if the user does not specify any. This argument is optional and only works with "valued" options.
 
 ```php
 new Option(
@@ -153,5 +153,5 @@ Option::REQUIRED | Option::VALUED,
 )
 ```
 
-[◂ Creating Commands](04-creating-commands.md) | [Documentation Summary](index.md) | [Using arguments ▸](06-using-the-arguments.md)
+[◂ Creating Routines](04-creating-commands.md) | [Documentation Summary](index.md) | [Using arguments ▸](06-using-the-arguments.md)
 -- | -- | --

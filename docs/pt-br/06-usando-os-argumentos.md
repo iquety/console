@@ -15,13 +15,13 @@ Considere o seguinte comando digitado no terminal:
 ./example dizer-ola -n "Ricardo Pereira" --livro "Arquitetura Limpa" Teste 'Portas e Adaptadores' --dev
 ```
 
-O interpretador vai enviar para o método `Command->handle()`, um objeto `Arguments`, onde as opções poderão ser obtidas para implementar a rotina do comando.
+O interpretador vai enviar para o método `Routine->handle()`, um objeto `Arguments`, onde as opções poderão ser obtidas para implementar a rotina do comando.
 
 Existem dois dipos de argumentos:
 
 ### 1.1. Argumento com chave
 
-São os valores das opções determinadas dentro do método abstrato `Command->initialize()` através do método `Command->addOption()`.
+São os valores das opções determinadas dentro do método abstrato `Routine->initialize()` através do método `Routine->addOption()`.
 
 Por exemplo:
 
@@ -30,7 +30,7 @@ Por exemplo:
 ```
 
 ```php
-class DizerOla extends Command
+class DizerOla extends Routine
 {
 // ...
 
@@ -60,7 +60,7 @@ Por exemplo:
 ```
 
 ```php
-class DizerOla extends Command
+class DizerOla extends Routine
 {
 // ...
 

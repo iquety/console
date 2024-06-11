@@ -11,11 +11,11 @@ A biblioteca inclui diversas funcionalidades para serem usadas em testes de unid
 
 As seguintes asserções adicionais estarão disponíveis para uso:
 
-- assertCommandHasName
-- assertCommandHasDescription
-- assertCommandHasHowToUse
-- assertCommandHasOption
-- assertCountCommandOptions
+- assertRoutineHasName
+- assertRoutineHasDescription
+- assertRoutineHasHowToUse
+- assertRoutineHasOption
+- assertCountRoutineOptions
 - assertOptionHasShortNotation
 - assertOptionHasLongNotation
 - assertOptionHasDescription

@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Iquety\Console\PhpUnit;
 
-use Iquety\Console\Command;
+use Iquety\Console\Routine;
 use Iquety\Console\Option;
-use Iquety\Console\PhpUnit\Constraints\CommandCountOptions;
-use Iquety\Console\PhpUnit\Constraints\CommandHasName;
-use Iquety\Console\PhpUnit\Constraints\CommandHasDescription;
-use Iquety\Console\PhpUnit\Constraints\CommandHasHowToUse;
-use Iquety\Console\PhpUnit\Constraints\CommandHasOption;
+use Iquety\Console\PhpUnit\Constraints\RoutineCountOptions;
+use Iquety\Console\PhpUnit\Constraints\RoutineHasName;
+use Iquety\Console\PhpUnit\Constraints\RoutineHasDescription;
+use Iquety\Console\PhpUnit\Constraints\RoutineHasHowToUse;
+use Iquety\Console\PhpUnit\Constraints\RoutineHasOption;
 use Iquety\Console\PhpUnit\Constraints\OptionHasDefaultValue;
 use Iquety\Console\PhpUnit\Constraints\OptionHasDescription;
 use Iquety\Console\PhpUnit\Constraints\OptionHasLongNotation;
@@ -29,49 +29,49 @@ use PHPUnit\Framework\TestCase;
  */
 class ConsoleTestCase extends TestCase
 {
-    public static function assertCommandHasName(
+    public static function assertRoutineHasName(
         string $name,
-        Command $command,
+        Routine $routine,
         string $message = ''
     ): void {
-        $constraint = new CommandHasName($name);
-        self::assertThat($command, $constraint, $message);
+        $constraint = new RoutineHasName($name);
+        self::assertThat($routine, $constraint, $message);
     }
 
-    public static function assertCommandHasDescription(
+    public static function assertRoutineHasDescription(
         string $name,
-        Command $command,
+        Routine $routine,
         string $message = ''
     ): void {
-        $constraint = new CommandHasDescription($name);
-        self::assertThat($command, $constraint, $message);
+        $constraint = new RoutineHasDescription($name);
+        self::assertThat($routine, $constraint, $message);
     }
 
-    public static function assertCommandHasHowToUse(
+    public static function assertRoutineHasHowToUse(
         string $name,
-        Command $command,
+        Routine $routine,
         string $message = ''
     ): void {
-        $constraint = new CommandHasHowToUse($name);
-        self::assertThat($command, $constraint, $message);
+        $constraint = new RoutineHasHowToUse($name);
+        self::assertThat($routine, $constraint, $message);
     }
 
-    public static function assertCommandHasOption(
+    public static function assertRoutineHasOption(
         string $notation,
-        Command $command,
+        Routine $routine,
         string $message = ''
     ): void {
-        $constraint = new CommandHasOption($notation);
-        self::assertThat($command, $constraint, $message);
+        $constraint = new RoutineHasOption($notation);
+        self::assertThat($routine, $constraint, $message);
     }
 
-    public static function assertCountCommandOptions(
+    public static function assertCountRoutineOptions(
         int $amount,
-        Command $command,
+        Routine $routine,
         string $message = ''
     ): void {
-        $constraint = new CommandCountOptions($amount);
-        self::assertThat($command, $constraint, $message);
+        $constraint = new RoutineCountOptions($amount);
+        self::assertThat($routine, $constraint, $message);
     }
 
     public static function assertOptionHasShortNotation(

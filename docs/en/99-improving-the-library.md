@@ -1,13 +1,13 @@
 # Improving the library
 
-[◂ Testing Commands](08-testing-commands.md) | [Documentation Summary ▸](index.md)
+[◂ Testing Routines](08-testing-commands.md) | [Documentation Summary ▸](index.md)
 -- | --
 
 ## 1. Infrastructure
 
 If [Docker](https://www.docker.com/) is installed on your computer, it is not necessary to have Composer or PHP installed.
 
-To use Composer and the code quality libraries, use the `./composer` script, located at the root of this repository. This script is actually a bridge to all Composer commands, running them through Docker.
+To use Composer and the code quality libraries, use the `./composer` script, located at the root of this repository. This script is actually a bridge to all Composer routines, running them through Docker.
 
 ## 2. Quality control
 
@@ -38,5 +38,5 @@ To run the unit tests, use:
 ./composer test
 ```
 
-[◂ Testing Commands](08-testing-commands.md) | [Documentation Summary ▸](index.md)
+[◂ Testing Routines](08-testing-commands.md) | [Documentation Summary ▸](index.md)
 -- | --
