@@ -4,7 +4,8 @@
 
 ## 1. Implementação
 
-A interpretação dos argumentos digitados pelo usuário acontece através da instância da classe `Iquety\Console\Terminal`, que pode ser configurada da seguinte maneira:
+A interpretação dos argumentos digitados pelo usuário acontece através da instância
+da classe `Iquety\Console\Terminal`, que pode ser configurada da seguinte maneira:
 
 ```php
 $terminal = new Terminal(__DIR__ . "/src");
@@ -23,11 +24,16 @@ $terminal->run($argv);
 $terminal = new Terminal(__DIR__ . "/src");
 ```
 
-A instância de `Iquety\Console\Terminal` deve ser criada, especificando um **"diretório de trabalho"**. Este diretório, efetivamente, não tem causará nenhum efeito colateral.
+A instância de `Iquety\Console\Terminal` deve ser criada, especificando um
+**"diretório de trabalho"**. Este diretório, efetivamente, não tem causará
+nenhum efeito colateral.
 
-É apenas uma forma de dizer, a todos os comandos os comandos existentes, qual é o *"diretório principal"* do projeto atual.
+É apenas uma forma de dizer, a todos as rotinas existentes, qual é
+o *"diretório principal"* do projeto atual.
 
-Geralmente, o **"diretório de trabalho"** será o diretório raiz da aplicação que usará a biblioteca para interpretar seus comandos. Dessa forma, os comandos poderão saber onde se encontra a estrutura do projeto.
+Geralmente, o **"diretório de trabalho"** será o diretório raiz da aplicação que
+usará a biblioteca para interpretar suas rotinas. Dessa forma, as rotinas poderão
+saber onde se encontra a estrutura do projeto.
 
 ### 2.2. O modo de usar
 
@@ -35,19 +41,21 @@ Geralmente, o **"diretório de trabalho"** será o diretório raiz da aplicaçã
 $terminal->setHowToUse("./example routine [options] [arguments]");
 ```
 
-Especifica a mensagem de ajuda sobre o formato do comando. Note que leva em consideração
-o nome do script atual, ou seja, `example`.
+Especifica a mensagem de ajuda sobre o formato da rotina. Note que leva em
+consideração o nome do script atual, ou seja, `example`.
 
-### 2.3. Diretório de comandos
+### 2.3. Diretório de rotinas
 
 ```php
 $terminal->loadRoutinesFrom(__DIR__ . "/tests/FakeApp/ContextOne/src/Routines");
 $terminal->loadRoutinesFrom(__DIR__ . "/tests/FakeApp/ContextTwo");
 ```
 
-Inúmeros diretórios contendo comandos poderão ser especificados. Cada um será varrido pela biblioteca a fim de identificar os comandos disponíveis.
+Inúmeros diretórios contendo rotinas poderão ser especificados. Cada um será
+varrido pela biblioteca a fim de identificar as rotinas disponíveis.
 
-Quando o usuario digitar `./example --help`, as informações de ajuda de todos os comandos será utilizada para exibir uma tela de ajuda abrangente no terminal do usuário.
+Quando o usuario digitar `./example --help`, as informações de ajuda de todos as
+rotinas será utilizada para exibir uma tela de ajuda abrangente no terminal do usuário.
 
 ### 2.4. Interpretar a entrada do usuário
 

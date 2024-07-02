@@ -1,19 +1,23 @@
-# Improving the library
+# Evolving the library
 
-[◂ Testing Routines](08-testing-commands.md) | [Documentation Summary ▸](index.md)
+[◂ Testing Routines](08-testing-routines.md) | [Documentation Summary ▸](index.md)
 -- | --
 
 ## 1. Infrastructure
 
-If [Docker](https://www.docker.com/) is installed on your computer, it is not necessary to have Composer or PHP installed.
+If [Docker](https://www.docker.com/) is installed on your computer, you do not
+need to have Composer or PHP installed.
 
-To use Composer and the code quality libraries, use the `./composer` script, located at the root of this repository. This script is actually a bridge to all Composer routines, running them through Docker.
+To use Composer and the code quality libraries, use the `./composer` script,
+located in the root of this repository. This script is actually a bridge to all
+Composer commands, running them through Docker.
 
 ## 2. Quality control
 
 ### 2.1. Tools
 
-For development, tools for unit testing and static analysis were used. All configured to the maximum level of demand.
+For development, tools for unit testing and static analysis were used.
+All configured to the maximum level of demand.
 
 These are the following tools:
 
@@ -24,13 +28,31 @@ These are the following tools:
 
 ### 2.2. Static analysis
 
-To analyze the implemented code and gather feedback from the tools, use:
+To analyze the implemented code and collect feedback from the tools, use:
 
 ```bash
 ./composer analyse
 ```
 
-### 2.3. Automated tests
+The above command runs all static analysis tools at the same time. If necessary,
+they can be carried out individually:
+
+```bash
+# Run the Mess Detector
+./composer mess
+```
+
+```bash
+# Run PHP Static Analyzer
+./composer stan
+```
+
+```bash
+# Run Code Sniffer
+./composer psr
+```
+
+### 2.3. Automated Tests
 
 To run the unit tests, use:
 
@@ -38,5 +60,19 @@ To run the unit tests, use:
 ./composer test
 ```
 
-[◂ Testing Routines](08-testing-commands.md) | [Documentation Summary ▸](index.md)
+## 3. Documentation
+
+Good navigation is essential for documentation to be easy to use. With this in
+mind, the tool [Iquety Docmap](https://github.com/iquety/docmap) was used to
+generate a pleasant navigation menu on all documentation pages.
+
+Editable documents are located in the `docs-src` directory. After adding or
+editing any documents contained there, simply run the command below to generate
+browsable documentation in the `docs` directory:
+
+```bash
+composer docmap
+```
+
+[◂ Testing Routines](08-testing-routines.md) | [Documentation Summary ▸](index.md)
 -- | --

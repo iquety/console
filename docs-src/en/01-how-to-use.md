@@ -4,7 +4,9 @@
 
 ## 1. Implement routines
 
-The first thing to do is create the necessary routines and place them in some directory. A routine must be implemented based on the abstract class `Iquety\Console\Routine`, as shown in the example below:
+The first thing to do is create the necessary routines and place them in some
+directory. A routine must be implemented based on the abstract class
+`Iquety\Console\Routine`, as shown in the example below:
 
 ```php
 class SayHello extends Routine
@@ -41,7 +43,7 @@ class SayHello extends Routine
     }
 
     /**
-     * It is in this method that the routine routine should be implemented.
+     * It is in this method that the rules of the routine must be implemented.
      */ 
     protected function handle(Arguments $arguments): void
     {

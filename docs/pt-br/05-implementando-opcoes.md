@@ -1,13 +1,15 @@
 # Implementando opções
 
-[◂ Criando Comandos](04-criando-comandos.md) | [Sumário da Documentação](indice.md) | [Usando argumentos ▸](06-usando-os-argumentos.md)
+[◂ Criando Rotinas](04-criando-rotinas.md) | [Sumário da Documentação](indice.md) | [Usando argumentos ▸](06-usando-os-argumentos.md)
 -- | -- | --
 
 ## 1. Sobre opções
 
-As opções são a cereja do bolo em um comando. Elas permitem controlar aquilo que o usuário pode fazer ao invocar uma rotina.
+As opções são a cereja do bolo em uma rotina. Elas permitem controlar aquilo que
+o usuário pode fazer ao invocar uma rotina.
 
-As opções são especificadas dentro do método abstrato `Routine->initialize()` através do método `Routine->addOption()`.
+As opções são especificadas dentro do método abstrato `Routine->initialize()`
+através do método `Routine->addOption()`.
 
 ```php
 class DizerOla extends Routine
@@ -30,15 +32,17 @@ class DizerOla extends Routine
 }
 ```
 
-Quando uma opção é adicionada (como no exemplo acima), é possível obter seu valor correspondente dentro de `Routine->handle()`, usando o método `Arguments::getOption()`.
+Quando uma opção é adicionada (como no exemplo acima), é possível obter seu valor
+correspondente dentro de `Routine->handle()`, usando o método `Arguments::getOption()`.
 
-Por exemplo, se o usuário especificar o seguinte comando:
+Por exemplo, se o usuário especificar a seguinte rotina:
 
 ```bash
 ./example dizer-ola --ler-arquivo
 ```
 
-> **Importante:** Todos os valores obtidos pelo objeto Argumentos serão do tipo "string". Mais informações em [Usando Argumentos](06-usando-os-argumentos.md)
+> **Importante:** Todos os valores obtidos pelo objeto Arguments serão do tipo
+"string". Mais informações em [Usando Argumentos](06-usando-os-argumentos.md)
 
 ```php
 class DizerOla extends Routine
@@ -59,7 +63,7 @@ Para criar uma nova opção, pode-se usar até 5 argumentos:
 
 ### 2.1. Notação Curta e Notação Longa
 
-São as chaves usadas para interagir com um comando. A curta deve começar com um traço (`-l`) e a longa com dois (`--ler-arquivo`).
+São as chaves usadas para interagir com uma rotina. A curta deve começar com um traço (`-l`) e a longa com dois (`--ler-arquivo`).
 
 Uma das duas notações deverá ser fornecida pelo usuário para ativar a opção.
 
@@ -69,7 +73,7 @@ Uma das duas notações deverá ser fornecida pelo usuário para ativar a opçã
 
 ### 2.3. Tipo
 
-É a forma como a opção se comportará na formulação do comando.
+É a forma como a opção se comportará na formulação da rotina.
 Uma opção pode ser de quatro tipos:
 
 #### 2.3.1. Obrigatória
@@ -120,7 +124,7 @@ new Option(
 )
 ```
 
-Nos casos acima, o usuário deverá especificar o comando no seguinte formato:
+Nos casos acima, o usuário deverá especificar a rotina no seguinte formato:
 
 ```bash
 ./example dizer-ola --ler-arquivo "mensagem.txt"
@@ -141,7 +145,8 @@ new Option(
 
 ### 2.4. Valor padrão
 
-O valor que a opção passará para o comando, caso o usuário não especifique nenhuma. Este argumento é opcional e funciona apenas com opções do tipo "valoradas".
+O valor que a opção passará para a rotina, caso o usuário não especifique nenhuma.
+Este argumento é opcional e funciona apenas com opções do tipo "valoradas".
 
 ```php
 new Option(
@@ -153,5 +158,5 @@ new Option(
 )
 ```
 
-[◂ Criando Comandos](04-criando-comandos.md) | [Sumário da Documentação](indice.md) | [Usando argumentos ▸](06-usando-os-argumentos.md)
+[◂ Criando Rotinas](04-criando-rotinas.md) | [Sumário da Documentação](indice.md) | [Usando argumentos ▸](06-usando-os-argumentos.md)
 -- | -- | --

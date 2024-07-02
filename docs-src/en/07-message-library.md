@@ -1,10 +1,12 @@
-# Improving the library
+# Message library
 
 --page-nav--
 
-## 1. A biblioteca de mensagens
+In addition to exclusive features for creating and executing routines, iquety/console
+contains a dedicated class for displaying messages in the terminal.
 
-In addition to the exclusive functionality for creating and executing routines, iquety/console contains a dedicated class for displaying messages in the terminal.
+It is not necessary to use it directly, as the abstract class `Iquety\Console\Routine`
+offers methods to facilitate its use, as explained in [Creating Routines](04-creating-routines.md).
 
 Below are the methods available in the `Iquety\Console\Message` class:
 

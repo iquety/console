@@ -1,6 +1,6 @@
 # Testing Routines
 
-[◂ Improving the library](07-message-library.md) | [Documentation Summary](index.md) | [Improving the library ▸](99-improving-the-library.md)
+[◂ Message library](07-message-library.md) | [Documentation Summary](index.md) | [Evolving the library ▸](99-improving-the-library.md)
 -- | -- | --
 
 ## 1. Using special assertions for PHPUnit
@@ -27,5 +27,5 @@ The following additional assertions will be available for use:
 - assertOptionIsNotRequired
 - assertOptionIsNotValued
 
-[◂ Improving the library](07-message-library.md) | [Documentation Summary](index.md) | [Improving the library ▸](99-improving-the-library.md)
+[◂ Message library](07-message-library.md) | [Documentation Summary](index.md) | [Evolving the library ▸](99-improving-the-library.md)
 -- | -- | --

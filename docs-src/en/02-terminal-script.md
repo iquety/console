@@ -4,9 +4,12 @@
 
 ## 1. Creating a script
 
-The purpose of a terminal routine is to be executed on the routine line, for this obvious reason it is necessary to create a script to receive the arguments passed by the user.
+The purpose of a terminal routine is to be executed on the routine line, for this
+obvious reason it is necessary to create a script to receive the arguments passed
+by the user.
 
-At the root of this repository there is an example script called **"example"**, containing the invocation of the `Iquety\Console\Terminal` class:
+At the root of this repository there is an example script called **"example"**,
+containing the invocation of the `Iquety\Console\Terminal` class:
 
 ```php
 #!/bin/php
@@ -35,13 +38,16 @@ $terminal->run($argv);
 
 ## 2. Using the terminal
 
-Note that the above script starts with `#!/bin/php`. This notation tells the operating system's terminal that this script should be interpreted by the "/bin/php" program. That way, you don't need to type `php example`, but just
-`./example`:
+Note that the above script starts with `#!/bin/php`. This notation tells the
+operating system's terminal that this script should be interpreted by the "/bin/php"
+program. That way, you don't need to type `php example`, but just `./example`:
 
 ```bash
 ./example --help
 ```
 
-> **Note:** on unix or derived systems, to be able to directly invoke a script (eg ./example), it must have the permission to execute. This is achieved by the routine `chmod a+x example`
+> **Note:** on unix or derived systems, to be able to directly invoke a script
+(eg ./example), it must have the permission to execute. This is achieved by the
+routine `chmod a+x example`
 
 --page-nav--

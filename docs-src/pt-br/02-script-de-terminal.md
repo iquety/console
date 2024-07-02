@@ -4,9 +4,11 @@
 
 ## 1. Criando um script
 
-O objetivo de um comando de terminal é ser executado na linha de comando, por esse motivo óbvio é preciso criar um script para receber os argumentos passados pelo usuário.
+O objetivo de uma rotina de terminal é ser executada na linha de comando, por esse
+motivo óbvio é preciso criar um script para receber os argumentos passados pelo usuário.
 
-Na raiz deste repositório existe um script de exemplo chamado **"example"**, contendo a invocação da classe `Iquety\Console\Terminal`:
+Na raiz deste repositório existe um script de exemplo chamado **"example"**, contendo
+a invocação da classe `Iquety\Console\Terminal`:
 
 ```php
 #!/bin/php

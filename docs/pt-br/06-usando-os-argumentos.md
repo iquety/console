@@ -1,21 +1,22 @@
 # Usando argumentos
 
-[◂ Implementando opções](05-implementando-opcoes.md) | [Sumário da Documentação](indice.md) | [Evoluindo a biblioteca ▸](07-biblioteca-de-mensagens.md)
+[◂ Implementando opções](05-implementando-opcoes.md) | [Sumário da Documentação](indice.md) | [A biblioteca de mensagens ▸](07-biblioteca-de-mensagens.md)
 -- | -- | --
 
 ## 1. Objeto Argumentos
 
-O objeto Argumentos é criado pelo interpretador de comandos, após varrer as opções fornecidas pelo usuário.
+O objeto `Arguments` é criado pelo interpretador de rotinas, após varrer as opções
+fornecidas pelo usuário.
 
 Ele contém todas todas as opções digitadas no terminal, organizadas de acordo com seu contexto.
 
-Considere o seguinte comando digitado no terminal:
+Considere a seguinte rotina digitado no terminal:
 
 ```bash
 ./example dizer-ola -n "Ricardo Pereira" --livro "Arquitetura Limpa" Teste 'Portas e Adaptadores' --dev
 ```
 
-O interpretador vai enviar para o método `Routine->handle()`, um objeto `Arguments`, onde as opções poderão ser obtidas para implementar a rotina do comando.
+O interpretador vai enviar para o método `Routine->handle()`, um objeto `Arguments`, onde as opções poderão ser obtidas para implementar as regras da rotina.
 
 Existem dois dipos de argumentos:
 
@@ -77,7 +78,9 @@ class DizerOla extends Routine
 
 ## 2. Valores dos argumentos
 
-Todos os valores obtidos pelo objeto `Arguments` serão do tipo "string", não importa se sejam textos ou números.Caso seja um booleano, a string devolvida será "0" ou "1".
+Todos os valores obtidos pelo objeto `Arguments` serão do tipo "string", não
+importa se sejam textos ou números. Caso seja um booleano, a string devolvida
+será "0" ou "1".
 
-[◂ Implementando opções](05-implementando-opcoes.md) | [Sumário da Documentação](indice.md) | [Evoluindo a biblioteca ▸](07-biblioteca-de-mensagens.md)
+[◂ Implementando opções](05-implementando-opcoes.md) | [Sumário da Documentação](indice.md) | [A biblioteca de mensagens ▸](07-biblioteca-de-mensagens.md)
 -- | -- | --

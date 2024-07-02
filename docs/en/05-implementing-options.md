@@ -1,13 +1,15 @@
 # Implementing Options
 
-[◂ Creating Routines](04-creating-commands.md) | [Documentation Summary](index.md) | [Using arguments ▸](06-using-the-arguments.md)
+[◂ Creating Routines](04-creating-routines.md) | [Documentation Summary](index.md) | [Using arguments ▸](06-using-the-arguments.md)
 -- | -- | --
 
 ## 1. About options
 
-Options are the 'icing on the cake' in one routine. They allow you to control what the user can do when invoking a routine.
+Options are the 'icing on the cake' in one routine. They allow you to control
+what the user can do when invoking a routine.
 
-Options are specified within the abstract method `Routine->initialize()` via the `Routine->addOption()` method.
+Options are specified within the abstract method `Routine->initialize()` via
+the `Routine->addOption()` method.
 
 ```php
 class SayHello extends Routine
@@ -30,7 +32,9 @@ class SayHello extends Routine
 }
 ```
 
-When an option is added (as in the example above), it is possible to get its corresponding value inside `Routine->handle()`, using the `Arguments::getOption()` method.
+When an option is added (as in the example above), it is possible to get its
+corresponding value inside `Routine->handle()`, using the `Arguments::getOption()`
+method.
 
 For example, if the user specifies the following routine:
 
@@ -38,7 +42,8 @@ For example, if the user specifies the following routine:
 ./example say-hello --read
 ```
 
-> **Important:** All values obtained by the Arguments object will be of type "string". More information at [Using the arguments](06-using-the-arguments.md)
+> **Important:** All values obtained by the Arguments object will be of type
+"string". More information at [Using the arguments](06-using-the-arguments.md)
 
 ```php
 class SayHello extends Routine
@@ -65,7 +70,8 @@ At least one of the two notations must be provided by the user to activate the o
 
 ### 2.2. Description
 
-It is an explanatory sentence about the purpose of the option. It will be used to display in the user's help message.
+It is an explanatory sentence about the purpose of the option. It will be used to
+display in the user's help message.
 
 ### 2.3. Type
 
@@ -74,7 +80,8 @@ An option can be of four types:
 
 #### 2.3.1. Required
 
-A **mandatory option** must be specified by the user. Otherwise, a message will be triggered in the terminal, asking for the correct filling.
+A **mandatory option** must be specified by the user. Otherwise, a message will
+be triggered in the terminal, asking for the correct filling.
 
 ```php
 new Option(
@@ -153,5 +160,5 @@ new Option(
 )
 ```
 
-[◂ Creating Routines](04-creating-commands.md) | [Documentation Summary](index.md) | [Using arguments ▸](06-using-the-arguments.md)
+[◂ Creating Routines](04-creating-routines.md) | [Documentation Summary](index.md) | [Using arguments ▸](06-using-the-arguments.md)
 -- | -- | --

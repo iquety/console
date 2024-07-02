@@ -1,11 +1,10 @@
-# Criando Comandos
+# Criando Rotinas
 
-[◂ Instanciando o terminal](03-instanciando-o-terminal.md) | [Sumário da Documentação](indice.md) | [Implementando opções ▸](05-implementando-opcoes.md)
--- | -- | --
+--page-nav--
 
-## 1. Sobre um comando
+## 1. Sobre uma rotina
 
-Todos os comandos devem ser implementados com base na classe abstrata `Iquety\Console\Routine`:
+Todas as rotinas devem ser implementadas com base na classe abstrata `Iquety\Console\Routine`:
 
 ```php
 abstract class Routine
@@ -20,36 +19,39 @@ abstract class Routine
 
 ### 2.1. Sobre
 
-No método `"Routine->inicializar()"` devem ser implementadas as configurações do comando, como o nome, a mensagem de ajuda, as opções, etc.
+No método `"Routine->initialize()"` devem ser implementadas as configurações da
+rotina, como o nome, a mensagem de ajuda, as opções, etc.
 
-Uma implementação mínima deve conter ao menos o método `"Routine->setarNome()"`, que fornece o nome do comando.
+Uma implementação mínima deve conter ao menos o método `"Routine->setName()"`,
+que fornece o nome da rotina.
 
 ```php
 class MeuComando extends Routine
 {
     protected function initialize(): void
     {
-        $this->setName("meu-comando");
+        $this->setName("minha-rotina");
 
-        // outras configurações do comando
+        // outras configurações da rotina
     }
 
     //...
 }
 ```
 
-### 2.2. Setar o nome do comando
+### 2.2. Setar o nome da rotina
 
-Especifica o nome do comando, ou seja, a palavra que o usuário digitará no terminal para invocá-lo.
+Especifica o nome da rotina, ou seja, a palavra que o usuário digitará no terminal
+para invocá-la.
 
 ```php
-$this->setName("meu-comando");
+$this->setName("minha-rotina");
 ```
 
-### 2.3. Setar a descrição do comando
+### 2.3. Setar a descrição da rotina
 
-Especifica uma descrição sobre o objetivo do comando.
-Esta mensagem será exibida nas informações de ajuda
+Especifica uma descrição sobre o objetivo da rotina. Esta mensagem será exibida
+nas informações de ajuda
 
 ```php
 $this->setDescription("Exibe a mensagem 'olá' no terminal");
@@ -57,8 +59,8 @@ $this->setDescription("Exibe a mensagem 'olá' no terminal");
 
 ### 2.4. Setar o modo de usar
 
-Especifica uma dica sobre como este comando pode ser utilizado.
-Esta mensagem será exibida nas informações de ajuda.
+Especifica uma dica sobre como esta rotina pode ser utilizada. Esta mensagem
+será exibida nas informações de ajuda.
 
 ```php
 $this->setHowToUse("./example dizer-ola [opcoes]");
@@ -66,7 +68,7 @@ $this->setHowToUse("./example dizer-ola [opcoes]");
 
 ### 2.5. Adicionar uma opção
 
-Adiciona uma opção ao comando, podendo ser *obrigatória*, *opcional* ou *valorada*.
+Adiciona uma opção à rotina, podendo ser *obrigatória*, *opcional* ou *valorada*.
 
 Mais informações sobre opções em [Implementando Opções](05-implementando-opcoes.md).
 
@@ -83,19 +85,20 @@ $this->addOption(new Option(
 
 ### 3.1. Sobre
 
-Da mesma forma, o método `"Routine->handle()"` deve ser implementado em todos os comandos. É neste método que a rotina do comando deverá ser implementada.
+Da mesma forma, o método `"Routine->handle()"` deve ser implementado em todas as
+rotinas. É neste método que as regras da rotina deverá ser implementada.
 
 Neste método, é possível interagir com o usuário e obter informações sobre o que
-ele forneceu como argumentos ao invocar o comando.
+ele forneceu como argumentos ao invocar a rotina.
 
 ```php
-class MeuComando extends Routine
+class MinhaRotina extends Routine
 {
     // ...
 
     protected function handle(Arguments $arguments): void
     {
-        // implementação da rotina do comando
+        // implementação da rotina do rotina
 
         $this->info('Comando executado com sucesso');
     }
@@ -160,7 +163,7 @@ echo $this->info("Operação executada");
 Exibe um texto sem destaque no terminal do usuário.
 
 ```php
-echo $this->line("Executando comando");
+echo $this->line("Executando rotina");
 ```
 
 ## 4. Objeto Argumentos
@@ -173,5 +176,4 @@ Este objeto é disponibilizado como argumento do método `"Routine->handle()"`.
 
 Mais informações sobre argumentos em [Usando os Argumentos](06-usando-os-argumentos.md).
 
-[◂ Instanciando o terminal](03-instanciando-o-terminal.md) | [Sumário da Documentação](indice.md) | [Implementando opções ▸](05-implementando-opcoes.md)
--- | -- | --
+--page-nav--

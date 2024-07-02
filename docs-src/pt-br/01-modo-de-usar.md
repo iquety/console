@@ -4,7 +4,9 @@
 
 ## 1. Implementar comandos
 
-A primeira coisa a fazer é criar os comandos necessários e alocá-los em algum diretório. Um comando deve ser implementado com base na classe abstrata `Iquety\Console\Routine`, conforme o exemplo abaixo:.
+A primeira coisa a fazer é criar as rotinas necessárias e alocá-las em algum diretório.
+Uma rotina deve ser implementada com base na classe abstrata `Iquety\Console\Routine`,
+conforme o exemplo abaixo:.
 
 ```php
 class DizerOla extends Routine
@@ -41,7 +43,7 @@ class DizerOla extends Routine
     }
 
     /**
-     * É neste método que a rotina do comando deverá ser implementada.
+     * É neste método que as regras da rotina deverá ser implementada.
      */ 
     protected function handle(Arguments $arguments): void
     {
@@ -67,24 +69,26 @@ class DizerOla extends Routine
 }
 ```
 
-Mais informações em [Criando Comandos](04-criando-comandos.md).
+Mais informações em [Criando Rotinas](04-criando-rotinas.md).
 
 ## 2. Criando o terminal
 
-Com os comandos implementados no diretório desejado, é preciso criar uma instância de `Iquety\Console\Terminal` e dizer para ela quais são os diretórios contendo os comandos implementados.
+Com as rotinas implementadas no diretório desejado, é preciso criar uma instância de
+`Iquety\Console\Terminal` e dizer para ela quais são os diretórios contendo as rotinas
+implementados.
 
-Por fim, basta mandar o Terminal executar os comandos através do método `Terminal->executar()`:
+Por fim, basta mandar o Terminal executar as rotinas através do método `Terminal->executar()`:
 
 ```php
 // Cria uma instância do Terminal. 
 $terminal = new Terminal("raiz/da/super/aplicacao");
 
 // Uma dica sobre como o terminal pode ser utilizado
-$terminal->setHowToUse("./superapp comando [opcoes] [argumentos]");
+$terminal->setHowToUse("./superapp rotina [opcoes] [argumentos]");
 
-// Adiciona dois diretórios contendo comandos
-$terminal->loadRoutinesFrom(__DIR__ . "/comandos");
-$terminal->loadRoutinesFrom(__DIR__ . "/mais-comandos");
+// Adiciona dois diretórios contendo rotinas
+$terminal->loadRoutinesFrom(__DIR__ . "/rotinas");
+$terminal->loadRoutinesFrom(__DIR__ . "/mais-rotinas");
 
 // Executa o comando a partir de uma lista de argumentos
 $terminal->run([ "dizer-ola", "-l", "mensagem.txt", "-d" ]);

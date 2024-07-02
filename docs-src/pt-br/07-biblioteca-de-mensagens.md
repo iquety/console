@@ -1,10 +1,12 @@
-# Evoluindo a biblioteca
+# A biblioteca de mensagens
 
 --page-nav--
 
-## 1. A biblioteca de mensagens
+Além das funcionalidades exclusivas para criação e execução de rotinas, iquety/console
+contém uma classe dedicada para a exibição de mensagens no terminal.
 
-Além das funcionalidades exclusivas para criação e execução de comandos, iquety/console contém uma classe dedicada para a exibição de mensagens no terminal.
+Não é necessário usá-la diretamente, pois a classe abstrata `Iquety\Console\Routine`
+oferece métodos para facilitar o seu uso, como explicado em [Criando Rotinas](04-criando-rotinas.md). 
 
 Abaixo, os métodos disponíveis na classe `Iquety\Console\Message`:
 
