@@ -5,7 +5,7 @@
 
 ## 1. Sobre um comando
 
-Todos os comandos devem ser implementados com base na classe abstrata `Freep\Console\Command`:
+Todos os comandos devem ser implementados com base na classe abstrata `Iquety\Console\Command`:
 
 ```php
 abstract class Command
@@ -127,8 +127,8 @@ echo $this->getAppPath('console/php');
 
 ### 3.4. Emitir uma mensagem
 
-As mensagens são disparadas diretamente por métodos já existentes na classe abstrata `Freep\Console\Command`.
-Por baixo dos panos, a classe `Freep\Console\Message` é usada para esse trabalho.
+As mensagens são disparadas diretamente por métodos já existentes na classe abstrata `Iquety\Console\Command`.
+Por baixo dos panos, a classe `Iquety\Console\Message` é usada para esse trabalho.
 Mais informações sobre sua utilidade pode ser consultada em [Biblioteca de mensagens](08-biblioteca-de-mensagens.md).
 
 ### 3.4.1. Emitir um alerta
@@ -166,7 +166,7 @@ echo $this->line("Executando comando");
 ## 4. Objeto Argumentos
 
 Para identificar as opções fornecidas pelo usuário no terminal, usa-se o objeto
-`Freep\Console\Arguments`, que fornece acesso às opções, valores e argumentos
+`Iquety\Console\Arguments`, que fornece acesso às opções, valores e argumentos
 especificados.
 
 Este objeto é disponibilizado como argumento do método `"Command->handle()"`.

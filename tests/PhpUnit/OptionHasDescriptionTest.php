@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\PhpUnit;
 
-use Freep\Console\Option;
-use Freep\Console\PhpUnit\Constraints\OptionHasDescription;
+use Iquety\Console\Option;
+use Iquety\Console\PhpUnit\Constraints\OptionHasDescription;
 use PHPUnit\Framework\ExpectationFailedException;
 
 class OptionHasDescriptionTest extends ConstraintTestCase

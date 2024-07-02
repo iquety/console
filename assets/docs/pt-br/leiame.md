@@ -1,4 +1,4 @@
-# Freep Console
+# Iquety Console
 
 [English](../../readme.md) | [Português](leiame.md)
 -- | --
@@ -17,7 +17,7 @@ Para informações detalhadas, consulte o [Sumário da Documentação](indice.md
 
 ### 1. Crie um comando
 
-Implemente um comando chamado "meu-comando", baseado na classe abstrata `Freep\Console\Command`:
+Implemente um comando chamado "meu-comando", baseado na classe abstrata `Iquety\Console\Command`:
 
 ```php
 class MeuComando extends Command
@@ -48,7 +48,7 @@ include __DIR__ . "/vendor/autoload.php";
 
 array_shift($argv);
 
-$terminal = new Freep\Console\Terminal("/diretorio/da/super/aplicacao");
+$terminal = new Iquety\Console\Terminal("/diretorio/da/super/aplicacao");
 $terminal->loadCommandsFrom("/diretorio/de/comandos");
 $terminal->run($argv);
 ```

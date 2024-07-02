@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Freep\Console\PhpUnit\Constraints;
+namespace Iquety\Console\PhpUnit\Constraints;
 
-use Freep\Console\Command;
+use Iquety\Console\Command;
 use PHPUnit\Framework\Constraint\Constraint;
 
 class CommandHasOption extends Constraint

@@ -6,8 +6,8 @@ namespace Tests\FakeApp\ContextTwo;
 
 // namespace inválido de propósito
 
-use Freep\Console\Arguments;
-use Freep\Console\Command;
+use Iquety\Console\Arguments;
+use Iquety\Console\Command;
 
 /** @SuppressWarnings(PHPMD.UnusedFormalParameter) */
 class ExampleFourInvalid extends Command // nome da classe diferente do arquivo

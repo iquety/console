@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests;
 
-use Freep\Console\Terminal;
+use Iquety\Console\Terminal;
 use InvalidArgumentException;
 use Tests\FakeApp\ContextOne\src\Commands\ExampleOne;
 use Tests\FakeApp\ContextTwo\ExampleTwo;

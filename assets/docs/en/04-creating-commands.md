@@ -4,7 +4,7 @@
 
 ## 1. About a command
 
-All commands must be implemented based on the abstract class `Freep\Console\Command`:
+All commands must be implemented based on the abstract class `Iquety\Console\Command`:
 
 ```php
 abstract class Command
@@ -124,8 +124,8 @@ echo $this->getAppPath('console/php');
 
 ### 3.4. Show a message
 
-Messages are triggered directly by existing methods in the `Freep\Console\Command` abstract class.
-Under the hood, the `Freep\Console\Message` class is used for this job.
+Messages are triggered directly by existing methods in the `Iquety\Console\Command` abstract class.
+Under the hood, the `Iquety\Console\Message` class is used for this job.
 More information about its usefulness can be found in [Message library](08-message-library.md).
 
 #### 3.4.1. Show an warning
@@ -162,7 +162,7 @@ echo $this->line("Running command");
 
 ## 4. Object Arguments
 
-To identify the options provided by the user in the terminal, the `Freep\Console\Arguments` object is used, which provides access to the specified options, values and arguments.
+To identify the options provided by the user in the terminal, the `Iquety\Console\Arguments` object is used, which provides access to the specified options, values and arguments.
 
 This object is available as an argument of the `"Command->handle()"` method.
 

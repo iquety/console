@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests;
 
-use Freep\Console\Arguments;
-use Freep\Console\Command;
+use Iquety\Console\Arguments;
+use Iquety\Console\Command;
 use OutOfRangeException;
 
 /** @SuppressWarnings(PHPMD.UnusedFormalParameter) */

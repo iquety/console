@@ -5,7 +5,7 @@
 
 ## 1. Using special assertions for PHPUnit
 
-The library includes several features to be used in unit tests with PHPUnit. Just extend the `Freep\Console\Tests\ConsoleTestCase` class instead of `PHPUnit\Framework\TestCase`.
+The library includes several features to be used in unit tests with PHPUnit. Just extend the `Iquety\Console\Tests\ConsoleTestCase` class instead of `PHPUnit\Framework\TestCase`.
 
 ## 2. Available assertions
 

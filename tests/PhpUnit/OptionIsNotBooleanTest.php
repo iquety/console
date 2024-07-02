@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\PhpUnit;
 
-use Freep\Console\Option;
-use Freep\Console\PhpUnit\Constraints\OptionIsNotBoolean;
+use Iquety\Console\Option;
+use Iquety\Console\PhpUnit\Constraints\OptionIsNotBoolean;
 use PHPUnit\Framework\ExpectationFailedException;
 
 class OptionIsNotBooleanTest extends ConstraintTestCase

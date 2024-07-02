@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\PhpUnit;
 
-use Freep\Console\Command;
-use Freep\Console\PhpUnit\Constraints\CommandHasName;
+use Iquety\Console\Command;
+use Iquety\Console\PhpUnit\Constraints\CommandHasName;
 use PHPUnit\Framework\ExpectationFailedException;
 
 class CommandHasNameTest extends ConstraintTestCase

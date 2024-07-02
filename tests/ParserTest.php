@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Tests;
 
-use Freep\Console\Arguments;
-use Freep\Console\Parser;
-use Freep\Console\Option;
+use Iquety\Console\Arguments;
+use Iquety\Console\Parser;
+use Iquety\Console\Option;
 use RuntimeException;
 
 /** @SuppressWarnings(PHPMD.TooManyPublicMethods) */

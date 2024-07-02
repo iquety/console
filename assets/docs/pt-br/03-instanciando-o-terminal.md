@@ -4,7 +4,7 @@
 
 ## 1. Implementação
 
-A interpretação dos argumentos digitados pelo usuário acontece através da instância da classe `Freep\Console\Terminal`, que pode ser configurada da seguinte maneira:
+A interpretação dos argumentos digitados pelo usuário acontece através da instância da classe `Iquety\Console\Terminal`, que pode ser configurada da seguinte maneira:
 
 ```php
 $terminal = new Terminal(__DIR__ . "/src");
@@ -23,7 +23,7 @@ $terminal->run($argv);
 $terminal = new Terminal(__DIR__ . "/src");
 ```
 
-A instância de `Freep\Console\Terminal` deve ser criada, especificando um **"diretório de trabalho"**. Este diretório, efetivamente, não tem causará nenhum efeito colateral.
+A instância de `Iquety\Console\Terminal` deve ser criada, especificando um **"diretório de trabalho"**. Este diretório, efetivamente, não tem causará nenhum efeito colateral.
 
 É apenas uma forma de dizer, a todos os comandos os comandos existentes, qual é o *"diretório principal"* do projeto atual.
 

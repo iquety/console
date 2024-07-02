@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\PhpUnit;
 
-use Freep\Console\Option;
-use Freep\Console\PhpUnit\Constraints\OptionIsRequired;
+use Iquety\Console\Option;
+use Iquety\Console\PhpUnit\Constraints\OptionIsRequired;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestFailure;
 

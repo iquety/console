@@ -7,7 +7,7 @@
 
 The purpose of a terminal command is to be executed on the command line, for this obvious reason it is necessary to create a script to receive the arguments passed by the user.
 
-At the root of this repository there is an example script called **"example"**, containing the invocation of the `Freep\Console\Terminal` class:
+At the root of this repository there is an example script called **"example"**, containing the invocation of the `Iquety\Console\Terminal` class:
 
 ```php
 #!/bin/php
@@ -16,7 +16,7 @@ At the root of this repository there is an example script called **"example"**, 
 // Includes Composer autoloader
 include __DIR__ . "/vendor/autoload.php";
 
-use Freep\Console\Terminal;
+use Iquety\Console\Terminal;
 
 // PHP in CLI mode provides the reserved variable "$argv", containing the list
 // of words typed by the user in the Terminal. This variable will be used to

@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Tests;
 
 use Closure;
-use Freep\Console\Terminal;
-use Freep\Console\PhpUnit\ConsoleTestCase;
+use Iquety\Console\Terminal;
+use Iquety\Console\PhpUnit\ConsoleTestCase;
 
 class TestCase extends ConsoleTestCase
 {

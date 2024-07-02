@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests;
 
-use Freep\Console\Option;
+use Iquety\Console\Option;
 use InvalidArgumentException;
 
 class OptionNotationsTest extends TestCase

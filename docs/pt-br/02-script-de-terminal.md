@@ -7,7 +7,7 @@
 
 O objetivo de um comando de terminal é ser executado na linha de comando, por esse motivo óbvio é preciso criar um script para receber os argumentos passados pelo usuário.
 
-Na raiz deste repositório existe um script de exemplo chamado **"example"**, contendo a invocação da classe `Freep\Console\Terminal`:
+Na raiz deste repositório existe um script de exemplo chamado **"example"**, contendo a invocação da classe `Iquety\Console\Terminal`:
 
 ```php
 #!/bin/php
@@ -16,7 +16,7 @@ Na raiz deste repositório existe um script de exemplo chamado **"example"**, co
 // Carrega o autoloader do Composer
 include __DIR__ . "/vendor/autoload.php";
 
-use Freep\Console\Terminal;
+use Iquety\Console\Terminal;
 
 // O PHP em modo CLI disponibiliza a variável reservada "$argv", contendo a lista
 // de palavras digitadas pelo usuário no Terminal. Esta variável será usada para

@@ -1,4 +1,4 @@
-# Freep Console
+# Iquety Console
 
 ![PHP Version](https://img.shields.io/badge/php-%5E8.0-blue)
 ![License](https://img.shields.io/badge/license-MIT-blue)
@@ -22,7 +22,7 @@ For detailed information, see [Documentation Summary](docs/en/index.md).
 
 ### 1. Create a command
 
-Implement a command called "my-command", based on the abstract class `Freep\Console\Command`:
+Implement a command called "my-command", based on the abstract class `Iquety\Console\Command`:
 
 ```php
 class MyCommand extends Command
@@ -53,7 +53,7 @@ include __DIR__ . "/vendor/autoload.php";
 
 array_shift($argv);
 
-$terminal = new Freep\Console\Terminal("/root/of/super/application");
+$terminal = new Iquety\Console\Terminal("/root/of/super/application");
 $terminal->loadCommandsFrom("/directory/of/commands");
 $terminal->run($argv);
 ```
