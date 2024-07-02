@@ -19,7 +19,7 @@ jobs:
           coverage: none
           tools: composer:v2, cs2pr
 
-      - run: COMPOSER_ROOT_VERSION=2.0.1 composer update --no-progress
+      - run: COMPOSER_ROOT_VERSION=dev-main composer update --no-progress
 
       - run: vendor/bin/phpcs --standard=PSR1,PSR12 src tests
 
@@ -44,7 +44,7 @@ jobs:
         run: composer require --no-update --dev phpunit/phpunit:^9.3
         if: "matrix.php == '8.3'"
 
-      - run: COMPOSER_ROOT_VERSION=2.0.1 composer update --no-progress
+      - run: COMPOSER_ROOT_VERSION=dev-main composer update --no-progress
       - run: vendor/bin/phpunit --no-coverage
 
   phpstan:
@@ -61,7 +61,7 @@ jobs:
           coverage: none
           tools: composer:v2
 
-      - run: COMPOSER_ROOT_VERSION=2.0.1 composer update --no-progress
+      - run: COMPOSER_ROOT_VERSION=dev-main composer update --no-progress
 
       - run: vendor/bin/phpstan analyse src --level 8 --no-progress
 
@@ -81,7 +81,7 @@ jobs:
           coverage: none
           tools: composer:v2
 
-      - run: COMPOSER_ROOT_VERSION=2.0.1 composer update --no-progress
+      - run: COMPOSER_ROOT_VERSION=dev-main composer update --no-progress
 
       - run: vendor/bin/phpmd src ansi cleancode,codesize,unusedcode,naming,design,controversial
 

@@ -391,16 +391,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/iquety/docmap.git",
-                "reference": "f69877511c4def6a83f363dbea1052500724e539"
+                "reference": "3fec7ec47e53f62862c25936740ab37334a6b485"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/iquety/docmap/zipball/f69877511c4def6a83f363dbea1052500724e539",
-                "reference": "f69877511c4def6a83f363dbea1052500724e539",
+                "url": "https://api.github.com/repos/iquety/docmap/zipball/3fec7ec47e53f62862c25936740ab37334a6b485",
+                "reference": "3fec7ec47e53f62862c25936740ab37334a6b485",
                 "shasum": ""
             },
             "require": {
-                "iquety/console": "2.0.0",
+                "iquety/console": "dev-main",
                 "php": "^8.3"
             },
             "require-dev": {
@@ -432,9 +432,9 @@
             ],
             "support": {
                 "issues": "https://github.com/iquety/docmap/issues",
-                "source": "https://github.com/iquety/docmap/tree/v2.0.1"
+                "source": "https://github.com/iquety/docmap/tree/main"
             },
-            "time": "2024-06-11T18:56:10+00:00"
+            "time": "2024-06-11T20:57:47+00:00"
         },
         {
             "name": "myclabs/deep-copy",
