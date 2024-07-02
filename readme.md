@@ -1,6 +1,6 @@
 # Iquety Console
 
-![PHP Version](https://img.shields.io/badge/php-%5E8.0-blue)
+![PHP Version](https://img.shields.io/badge/php-%5E8.3-blue)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/22ee6215a7984d7096b833b38e6da26e)](https://www.codacy.com/gh/iquety/console/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=iquety/console&amp;utm_campaign=Badge_Grade)
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/22ee6215a7984d7096b833b38e6da26e)](https://www.codacy.com/gh/iquety/console/dashboard?utm_source=github.com&utm_medium=referral&utm_content=iquety/console&utm_campaign=Badge_Coverage)
@@ -97,7 +97,7 @@ $terminal->run($argv);
 
 ## Characteristics
 
-- Made for PHP 8.0 or higher;
+- Made for PHP 8.3 or higher;
 - Codified with best practices and maximum quality;
 - Well documented and IDE friendly;
 - Made with TDD (Test Driven Development);
