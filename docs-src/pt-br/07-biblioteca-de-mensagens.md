@@ -6,7 +6,7 @@ Além das funcionalidades exclusivas para criação e execução de rotinas, iqu
 contém uma classe dedicada para a exibição de mensagens no terminal.
 
 Não é necessário usá-la diretamente, pois a classe abstrata `Iquety\Console\Routine`
-oferece métodos para facilitar o seu uso, como explicado em [Criando Rotinas](04-criando-rotinas.md). 
+oferece métodos para facilitar o seu uso, como explicado em [Criando Rotinas](04-criando-rotinas.md).
 
 Abaixo, os métodos disponíveis na classe `Iquety\Console\Message`:
 
