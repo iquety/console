@@ -8,7 +8,7 @@
 Este repositório contém as funcionalidades necessárias para implementar um gerenciador de comandos para terminal em uma aplicação PHP de forma fácil.
 
 ```bash
-composer require iquety/console
+composer require ricardopedias/freep-console
 ```
 
 Para informações detalhadas, consulte o [Sumário da Documentação](indice.md).
@@ -17,10 +17,10 @@ Para informações detalhadas, consulte o [Sumário da Documentação](indice.md
 
 ### 1. Crie um comando
 
-Implemente um comando chamado "meu-comando", baseado na classe abstrata `Iquety\Console\Command`:
+Implemente um comando chamado "meu-comando", baseado na classe abstrata `Iquety\Console\Routine`:
 
 ```php
-class MeuComando extends Command
+class MeuComando extends Routine
 {
 protected function initialize(): void
 {
@@ -49,7 +49,7 @@ include __DIR__ . "/vendor/autoload.php";
 array_shift($argv);
 
 $terminal = new Iquety\Console\Terminal("/diretorio/da/super/aplicacao");
-$terminal->loadCommandsFrom("/diretorio/de/comandos");
+$terminal->loadRoutinesFrom("/diretorio/de/comandos");
 $terminal->run($argv);
 ```
 
@@ -64,14 +64,14 @@ $terminal->run($argv);
 ./meuconsole meu-comando --help
 # exibe:
 #
-# Command: meu-comando
-# Run the 'meu-comando' command
+# Routine: meu-comando
+# Run the 'meu-comando' routine
 #
 # How to use:
 # ./meuconsole meu-comando [options]
 #
 # Options:
-# -h, --help   Display command help
+# -h, --help   Display routine help
 # -r, --read   Lê um arquivo texto
 ```
 
@@ -80,14 +80,14 @@ $ ./meuconsole --ajuda
 # exibe:
 #
 # How to use:
-# ./meuconsole command [options] [arguments]
+# ./meuconsole routine [options] [arguments]
 #
 # Options:
-# -h, --help   Display command help
+# -h, --help   Display routine help
 #
-# Available commands:
-# help           Display command help
-# meu-comando    Run the 'meu-comando' command
+# Available routines:
+# help           Display routine help
+# meu-comando    Run the 'meu-comando' routine
 ```
 
 ## Características

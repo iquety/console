@@ -6,7 +6,7 @@ namespace Tests;
 
 use Iquety\Console\Terminal;
 use InvalidArgumentException;
-use Tests\FakeApp\ContextOne\src\Commands\ExampleOne;
+use Tests\FakeApp\ContextOne\src\Routines\ExampleOne;
 use Tests\FakeApp\ContextTwo\ExampleTwo;
 
 class TerminalTest extends TestCase
@@ -16,21 +16,21 @@ class TerminalTest extends TestCase
     {
         return [
             "How to use:",
-            "./example command [options] [arguments]",
+            "./example routine [options] [arguments]",
 
             "Options:",
             "-h, --help",
             "Display help information",
 
-            "Available commands:",
+            "Available routines:",
             "help",
             "Display help information",
             "example-exception",
-            "Run the 'example-exception' command",
+            "Run the 'example-exception' routine",
             "example1",
-            "Run the 'example1' command",
-            "very-very-very-more-very-long-command",
-            "Run the 'example2' command"
+            "Run the 'example1' routine",
+            "very-very-very-more-very-long-routine",
+            "Run the 'example2' routine"
         ];
     }
 
@@ -44,12 +44,12 @@ class TerminalTest extends TestCase
     }
 
     /** @test */
-    public function loadCommandsFromException(): void
+    public function loadRoutinesFromException(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
         $terminal = new Terminal(__DIR__ . "/FakeApp");
-        $terminal->loadCommandsFrom("/caminho-inexistente");
+        $terminal->loadRoutinesFrom("/caminho-inexistente");
     }
 
     /** @test */
@@ -59,18 +59,20 @@ class TerminalTest extends TestCase
 
         $result = $this->gotcha($terminal, fn($terminal) => $terminal->run([]));
 
-        $this->assertEquals("no", $terminal->executedCommand());
+        $this->assertEquals("no", $terminal->executedRoutine());
+
         $this->assertEmpty($result);
     }
 
     /** @test */
-    public function nonExistentCommand(): void
+    public function nonExistentRoutine(): void
     {
         $terminal = $this->terminalFactory();
 
         $result = $this->gotcha($terminal, fn($terminal) => $terminal->run([ "blabla" ]));
 
-        $this->assertEquals("no", $terminal->executedCommand());
+        $this->assertEquals("no", $terminal->executedRoutine());
+
 
         foreach ($this->helpMessageLines() as $texto) {
             $this->assertStringContainsString($texto, $result);
@@ -78,62 +80,67 @@ class TerminalTest extends TestCase
     }
 
     /** @test */
-    public function exampleCommandOne(): void
+    public function exampleRoutineOne(): void
     {
         $terminal = $this->terminalFactory();
 
         $result = $this->gotcha($terminal, fn($terminal) => $terminal->run([ "example1" ]));
 
-        $this->assertEquals(ExampleOne::class, $terminal->executedCommand());
-        $this->assertStringContainsString("Command 'example1' executed", $result);
+        $this->assertEquals(ExampleOne::class, $terminal->executedRoutine());
+
+        $this->assertStringContainsString("Routine 'example1' executed", $result);
     }
 
     /** @test */
-    public function exampleCommandTwo(): void
+    public function exampleRoutineTwo(): void
     {
         $terminal = $this->terminalFactory();
 
         $result = $this->gotcha(
             $terminal,
-            fn($terminal) => $terminal->run([ "very-very-very-more-very-long-command" ])
+            fn($terminal) => $terminal->run([ "very-very-very-more-very-long-routine" ])
         );
 
-        $this->assertEquals(ExampleTwo::class, $terminal->executedCommand());
-        $this->assertStringContainsString("Command 'example2' executed", $result);
+        $this->assertEquals(ExampleTwo::class, $terminal->executedRoutine());
+
+        $this->assertStringContainsString("Routine 'example2' executed", $result);
     }
 
     /** @test */
-    public function exampleCommandException(): void
+    public function exampleRoutineException(): void
     {
         $terminal = $this->terminalFactory();
 
         $result = $this->gotcha($terminal, fn($terminal) => $terminal->run([ "example-exception" ]));
 
-        $this->assertEquals("no", $terminal->executedCommand());
-        $this->assertStringContainsString("Command 'example-exception' threw exception", $result);
+        $this->assertEquals("no", $terminal->executedRoutine());
+
+        $this->assertStringContainsString("Routine 'example-exception' threw exception", $result);
     }
 
     /** @test */
-    public function exampleCommandBadImplementation(): void
+    public function exampleRoutineBadImplementation(): void
     {
         $terminal = $this->terminalFactory();
-        $terminal->loadCommandsFrom(__DIR__ . "/FakeApp/ContextThree");
+        $terminal->loadRoutinesFrom(__DIR__ . "/FakeApp/ContextThree");
 
         $result = $this->gotcha($terminal, fn($terminal) => $terminal->run([ "bug" ]));
 
-        $this->assertEquals("no", $terminal->executedCommand());
+        $this->assertEquals("no", $terminal->executedRoutine());
+
         $this->assertStringContainsString("Unable to extract namespace from file", $result);
     }
 
     /** @test */
-    public function exampleCommandClassWithInvalidName(): void
+    public function exampleRoutineClassWithInvalidName(): void
     {
         $terminal = $this->terminalFactory();
-        $terminal->loadCommandsFrom(__DIR__ . "/FakeApp/ContextFour");
+        $terminal->loadRoutinesFrom(__DIR__ . "/FakeApp/ContextFour");
 
         $result = $this->gotcha($terminal, fn($terminal) => $terminal->run([ "example4" ]));
 
-        $this->assertEquals("no", $terminal->executedCommand());
+        $this->assertEquals("no", $terminal->executedRoutine());
+
         $this->assertStringContainsString(
             "The file '" . __DIR__ . "/FakeApp/ContextFour/ExampleFour.php' " .
             "not contains a 'Tests\FakeApp\ContextTwo\ExampleFour' class",

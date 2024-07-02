@@ -1,4 +1,4 @@
-# Testing Commands
+# Testing Routines
 
 [◂ Improving the library](07-message-library.md) | [Documentation Summary](index.md) | [Improving the library ▸](99-improving-the-library.md)
 -- | -- | --
@@ -11,11 +11,11 @@ The library includes several features to be used in unit tests with PHPUnit. Jus
 
 The following additional assertions will be available for use:
 
-- assertCommandHasName
-- assertCommandHasDescription
-- assertCommandHasHowToUse
-- assertCommandHasOption
-- assertCountCommandOptions
+- assertRoutineHasName
+- assertRoutineHasDescription
+- assertRoutineHasHowToUse
+- assertRoutineHasOption
+- assertCountRoutineOptions
 - assertOptionHasShortNotation
 - assertOptionHasLongNotation
 - assertOptionHasDescription

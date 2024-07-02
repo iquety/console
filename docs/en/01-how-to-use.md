@@ -3,12 +3,12 @@
 [◂ Documentation Summary](index.md) | [Terminal script ▸](02-terminal-script.md)
 -- | --
 
-## 1. Implement commands
+## 1. Implement routines
 
-The first thing to do is create the necessary commands and place them in some directory. A command must be implemented based on the abstract class `Iquety\Console\Command`, as shown in the example below:
+The first thing to do is create the necessary routines and place them in some directory. A routine must be implemented based on the abstract class `Iquety\Console\Routine`, as shown in the example below:
 
 ```php
-class SayHello extends Command
+class SayHello extends Routine
 {
 /**
 * At least the "setName" method must be invoked to determine the word
@@ -42,7 +42,7 @@ Option::OPTIONAL
 }
 
 /**
-* It is in this method that the command routine should be implemented.
+* It is in this method that the routine routine should be implemented.
 */
 protected function handle(Arguments $arguments): void
 {
@@ -68,26 +68,26 @@ $this->info($message);
 }
 ```
 
-More information at [Creating Commands](04-creating-commands.md).
+More information at [Creating Routines](04-creating-routines.md).
 
 ## 2. Criando o terminal
 
-With the commands implemented in the desired directory, it is necessary to create an instance of `Iquety\Console\Terminal` and tell it which directories contain the implemented commands.
+With the routines implemented in the desired directory, it is necessary to create an instance of `Iquety\Console\Terminal` and tell it which directories contain the implemented routines.
 
-Finally, just tell the Terminal to execute the commands through the `Terminal->run()` method:
+Finally, just tell the Terminal to execute the routines through the `Terminal->run()` method:
 
 ```php
 // Creates a Terminal instance.
 $terminal = new Terminal("root/of/super/application");
 
 // A tip on how the terminal can be used
-$terminal->setHowToUse("./example command [options] [arguments]");
+$terminal->setHowToUse("./example routine [options] [arguments]");
 
-// Add two directories containing commands
-$terminal->loadCommandsFrom(__DIR__ . "/commands");
-$terminal->loadCommandsFrom(__DIR__ . "/more-commands");
+// Add two directories containing routines
+$terminal->loadRoutinesFrom(__DIR__ . "/routines");
+$terminal->loadRoutinesFrom(__DIR__ . "/more-routines");
 
-// Execute command from a list of arguments
+// Execute routine from a list of arguments
 $terminal->run([ "say-hello", "-l", "message.txt", "-d" ]);
 
 ```

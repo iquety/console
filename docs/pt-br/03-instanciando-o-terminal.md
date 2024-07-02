@@ -9,9 +9,9 @@ A interpretação dos argumentos digitados pelo usuário acontece através da in
 
 ```php
 $terminal = new Terminal(__DIR__ . "/src");
-$terminal->setHowToUse("./example command [options] [arguments]");
-$terminal->loadCommandsFrom(__DIR__ . "/tests/FakeApp/ContextOne/src/Commands");
-$terminal->loadCommandsFrom(__DIR__ . "/tests/FakeApp/ContextTwo");
+$terminal->setHowToUse("./example routine [options] [arguments]");
+$terminal->loadRoutinesFrom(__DIR__ . "/tests/FakeApp/ContextOne/src/Routines");
+$terminal->loadRoutinesFrom(__DIR__ . "/tests/FakeApp/ContextTwo");
 
 $terminal->run($argv);
 ```
@@ -33,7 +33,7 @@ Geralmente, o **"diretório de trabalho"** será o diretório raiz da aplicaçã
 ### 2.2. O modo de usar
 
 ```php
-$terminal->setHowToUse("./example command [options] [arguments]");
+$terminal->setHowToUse("./example routine [options] [arguments]");
 ```
 
 Especifica a mensagem de ajuda sobre o formato do comando. Note que leva em consideração
@@ -42,8 +42,8 @@ o nome do script atual, ou seja, `example`.
 ### 2.3. Diretório de comandos
 
 ```php
-$terminal->loadCommandsFrom(__DIR__ . "/tests/FakeApp/ContextOne/src/Commands");
-$terminal->loadCommandsFrom(__DIR__ . "/tests/FakeApp/ContextTwo");
+$terminal->loadRoutinesFrom(__DIR__ . "/tests/FakeApp/ContextOne/src/Routines");
+$terminal->loadRoutinesFrom(__DIR__ . "/tests/FakeApp/ContextTwo");
 ```
 
 Inúmeros diretórios contendo comandos poderão ser especificados. Cada um será varrido pela biblioteca a fim de identificar os comandos disponíveis.

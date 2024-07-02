@@ -1,11 +1,11 @@
 # Improving the library
 
-[◂ Using arguments](06-using-the-arguments.md) | [Documentation Summary](index.md) | [Testing Commands ▸](08-testing-commands.md)
+[◂ Using arguments](06-using-the-arguments.md) | [Documentation Summary](index.md) | [Testing Routines ▸](08-testing-commands.md)
 -- | -- | --
 
 ## 1. A biblioteca de mensagens
 
-In addition to the exclusive functionality for creating and executing commands, freep-console contains a dedicated class for displaying messages in the terminal.
+In addition to the exclusive functionality for creating and executing routines, iquety/console contains a dedicated class for displaying messages in the terminal.
 
 Below are the methods available in the `Iquety\Console\Message` class:
 
@@ -49,5 +49,5 @@ $message->output();
 $message->outputLn(); // with line break
 ```
 
-[◂ Using arguments](06-using-the-arguments.md) | [Documentation Summary](index.md) | [Testing Commands ▸](08-testing-commands.md)
+[◂ Using arguments](06-using-the-arguments.md) | [Documentation Summary](index.md) | [Testing Routines ▸](08-testing-commands.md)
 -- | -- | --

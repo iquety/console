@@ -1,6 +1,6 @@
 # Instantiating the Terminal
 
-[◂ Terminal script](02-terminal-script.md) | [Documentation Summary](index.md) | [Creating Commands ▸](04-creating-commands.md)
+[◂ Terminal script](02-terminal-script.md) | [Documentation Summary](index.md) | [Creating Routines ▸](04-creating-commands.md)
 -- | -- | --
 
 ## 1. Implementation
@@ -9,9 +9,9 @@ The interpretation of the arguments entered by the user happens through the inst
 
 ```php
 $terminal = new Terminal(__DIR__ . "/src");
-$terminal->setHowToUse("./example command [options] [arguments]");
-$terminal->loadCommandsFrom(__DIR__ . "/tests/FakeApp/ContextOne/src/Commands");
-$terminal->loadCommandsFrom(__DIR__ . "/tests/FakeApp/ContextTwo");
+$terminal->setHowToUse("./example routine [options] [arguments]");
+$terminal->loadRoutinesFrom(__DIR__ . "/tests/FakeApp/ContextOne/src/Routines");
+$terminal->loadRoutinesFrom(__DIR__ . "/tests/FakeApp/ContextTwo");
 
 $terminal->run($argv);
 ```
@@ -27,28 +27,28 @@ $terminal = new Terminal(__DIR__ . "/src");
 The instance of `Iquety\Console\Terminal` must be created, specifying a **"working directory"**.
 This directory will effectively not cause any side effects.
 
-It's just a way to make available, for all existing commands, what is the *"main directory"* of the current project.
+It's just a way to make available, for all existing routines, what is the *"main directory"* of the current project.
 
-Generally, the **"working directory"** will be the root directory of the application that will use the library to interpret its commands. That way, the commands will be able to know where the project structure is.
+Generally, the **"working directory"** will be the root directory of the application that will use the library to interpret its routines. That way, the routines will be able to know where the project structure is.
 
 ### 2.2. How to use
 
 ```php
-$terminal->setHowToUse("./example command [options] [arguments]");
+$terminal->setHowToUse("./example routine [options] [arguments]");
 ```
 
-Specifies the help message about the command format. Note that it takes into account the name of the current script, ie `example`.
+Specifies the help message about the routine format. Note that it takes into account the name of the current script, ie `example`.
 
-### 2.3. Command directory
+### 2.3. Routine directory
 
 ```php
-$terminal->loadCommandsFrom(__DIR__ . "/tests/FakeApp/ContextOne/src/Commands");
-$terminal->loadCommandsFrom(__DIR__ . "/tests/FakeApp/ContextTwo");
+$terminal->loadRoutinesFrom(__DIR__ . "/tests/FakeApp/ContextOne/src/Routines");
+$terminal->loadRoutinesFrom(__DIR__ . "/tests/FakeApp/ContextTwo");
 ```
 
-Numerous directories containing commands can be specified. Each will be scanned through the library to identify available commands.
+Numerous directories containing routines can be specified. Each will be scanned through the library to identify available routines.
 
-When the user types `./example --help`, the help information for all commands will be used to display a comprehensive help screen in the user's terminal.
+When the user types `./example --help`, the help information for all routines will be used to display a comprehensive help screen in the user's terminal.
 
 ### 2.4. Interpret user input
 
@@ -60,5 +60,5 @@ Arguments typed by the user in the operating system's terminal are interpreted h
 
 More information from the PHP documentation at [Reserved Variables](https://www.php.net/manual/pt_BR/reserved.variables.argv.php)
 
-[◂ Terminal script](02-terminal-script.md) | [Documentation Summary](index.md) | [Creating Commands ▸](04-creating-commands.md)
+[◂ Terminal script](02-terminal-script.md) | [Documentation Summary](index.md) | [Creating Routines ▸](04-creating-commands.md)
 -- | -- | --

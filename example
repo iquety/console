@@ -25,8 +25,8 @@ use Iquety\Console\Terminal;
 array_shift($argv);
 
 $terminal = new Terminal(__DIR__ . "/codigo");
-$terminal->setHowToUse("./example command [options] [arguments]");
-$terminal->loadCommandsFrom(__DIR__ . "/tests/FakeApp/ContextOne/src/Commands");
-$terminal->loadCommandsFrom(__DIR__ . "/tests/FakeApp/ContextTwo");
+$terminal->setHowToUse("./example routine [options] [arguments]");
+$terminal->loadRoutinesFrom(__DIR__ . "/tests/FakeApp/ContextOne/src/Routines");
+$terminal->loadRoutinesFrom(__DIR__ . "/tests/FakeApp/ContextTwo");
 
 $terminal->run($argv);

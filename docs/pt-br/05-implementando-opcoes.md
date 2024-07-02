@@ -7,10 +7,10 @@
 
 As opções são a cereja do bolo em um comando. Elas permitem controlar aquilo que o usuário pode fazer ao invocar uma rotina.
 
-As opções são especificadas dentro do método abstrato `Command->initialize()` através do método `Command->addOption()`.
+As opções são especificadas dentro do método abstrato `Routine->initialize()` através do método `Routine->addOption()`.
 
 ```php
-class DizerOla extends Command
+class DizerOla extends Routine
 {
 protected function initialize(): void
 {
@@ -30,7 +30,7 @@ Option::REQUIRED | Option::VALUED
 }
 ```
 
-Quando uma opção é adicionada (como no exemplo acima), é possível obter seu valor correspondente dentro de `Command->handle()`, usando o método `Arguments::getOption()`.
+Quando uma opção é adicionada (como no exemplo acima), é possível obter seu valor correspondente dentro de `Routine->handle()`, usando o método `Arguments::getOption()`.
 
 Por exemplo, se o usuário especificar o seguinte comando:
 
@@ -41,7 +41,7 @@ Por exemplo, se o usuário especificar o seguinte comando:
 > **Importante:** Todos os valores obtidos pelo objeto Argumentos serão do tipo "string". Mais informações em [Usando Argumentos](06-usando-os-argumentos.md)
 
 ```php
-class DizerOla extends Command
+class DizerOla extends Routine
 {
 // ...
 

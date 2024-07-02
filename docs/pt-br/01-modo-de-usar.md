@@ -5,10 +5,10 @@
 
 ## 1. Implementar comandos
 
-A primeira coisa a fazer é criar os comandos necessários e alocá-los em algum diretório. Um comando deve ser implementado com base na classe abstrata `Iquety\Console\Command`, conforme o exemplo abaixo:.
+A primeira coisa a fazer é criar os comandos necessários e alocá-los em algum diretório. Um comando deve ser implementado com base na classe abstrata `Iquety\Console\Routine`, conforme o exemplo abaixo:.
 
 ```php
-class DizerOla extends Command
+class DizerOla extends Routine
 {
 /**
 * Pelo menos o método "setName" deverá ser invocado para determinar a palavra
@@ -84,8 +84,8 @@ $terminal = new Terminal("raiz/da/super/aplicacao");
 $terminal->setHowToUse("./superapp comando [opcoes] [argumentos]");
 
 // Adiciona dois diretórios contendo comandos
-$terminal->loadCommandsFrom(__DIR__ . "/comandos");
-$terminal->loadCommandsFrom(__DIR__ . "/mais-comandos");
+$terminal->loadRoutinesFrom(__DIR__ . "/comandos");
+$terminal->loadRoutinesFrom(__DIR__ . "/mais-comandos");
 
 // Executa o comando a partir de uma lista de argumentos
 $terminal->run([ "dizer-ola", "-l", "mensagem.txt", "-d" ]);

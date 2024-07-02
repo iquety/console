@@ -20,9 +20,9 @@ class TestCase extends ConsoleTestCase
     protected function terminalFactory(): Terminal
     {
         $terminal = new Terminal(__DIR__ . "/FakeApp");
-        $terminal->setHowToUse("./example command [options] [arguments]");
-        $terminal->loadCommandsFrom(__DIR__ . "/FakeApp/ContextOne/src/Commands");
-        $terminal->loadCommandsFrom(__DIR__ . "/FakeApp/ContextTwo");
+        $terminal->setHowToUse("./example routine [options] [arguments]");
+        $terminal->loadRoutinesFrom(__DIR__ . "/FakeApp/ContextOne/src/Routines");
+        $terminal->loadRoutinesFrom(__DIR__ . "/FakeApp/ContextTwo");
         return $terminal;
     }
 }
