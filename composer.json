@@ -4,17 +4,22 @@
     "description": "Toolkit for implementing PHP-based terminal routines",
     "keywords": ["framework", "tool", "console"],
     "license": "MIT",
+    "extra": {
+        "branch-alias": {
+            "dev-main": "2.0.0-dev"
+        }
+    },
     "require": {
         "php": "^8.3.0",
         "iquety/security": "dev-main"
     },
     "require-dev": {
         "codacy/coverage": "dev-master",
-        "phpunit/phpunit": "^9",
-        "phpstan/phpstan": "^0.12",
         "phpmd/phpmd": "@stable",
-        "iquety/docmap": "dev-main",
-        "squizlabs/php_codesniffer": "3.*"
+        "phpstan/phpstan": "^1.8",
+        "phpunit/phpunit": "^9",
+        "squizlabs/php_codesniffer": "3.*",
+        "iquety/docmap": "2.0.1"
     },
     "autoload": {
         "psr-4": {
