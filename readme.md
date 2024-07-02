@@ -13,7 +13,7 @@
 This repository contains the necessary functionality to easily implement a terminal command manager in a PHP application.
 
 ```bash
-composer require ricardopedias/freep-console
+composer require iquety/console
 ```
 
 For detailed information, see [Documentation Summary](docs/en/index.md).
