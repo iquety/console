@@ -10,9 +10,9 @@ Todos os comandos devem ser implementados com base na classe abstrata `Iquety\Co
 ```php
 abstract class Routine
 {
-abstract protected function initialize(): void;
+    abstract protected function initialize(): void;
 
-abstract protected function handle(Arguments $arguments): void;
+    abstract protected function handle(Arguments $arguments): void;
 }
 ```
 
@@ -27,14 +27,14 @@ Uma implementação mínima deve conter ao menos o método `"Routine->setarNome(
 ```php
 class MeuComando extends Routine
 {
-protected function initialize(): void
-{
-$this->setName("meu-comando");
+    protected function initialize(): void
+    {
+        $this->setName("meu-comando");
 
-// outras configurações do comando
-}
+        // outras configurações do comando
+    }
 
-//...
+    //...
 }
 ```
 
@@ -72,10 +72,10 @@ Mais informações sobre opções em [Implementando Opções](05-implementando-o
 
 ```php
 $this->addOption(new Option(
-'-d',
-'--destruir',
-'Apaga o arquivo texto após usá-lo',
-Option::OPTIONAL
+    '-d',
+    '--destruir',
+    'Apaga o arquivo texto após usá-lo',
+    Option::OPTIONAL
 ));
 ```
 
@@ -91,16 +91,16 @@ ele forneceu como argumentos ao invocar o comando.
 ```php
 class MeuComando extends Routine
 {
-// ...
+    // ...
 
-protected function handle(Arguments $arguments): void
-{
-// implementação da rotina do comando
+    protected function handle(Arguments $arguments): void
+    {
+        // implementação da rotina do comando
 
-$this->info('Comando executado com sucesso');
-}
+        $this->info('Comando executado com sucesso');
+    }
 
-//...
+    //...
 }
 ```
 

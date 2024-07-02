@@ -32,19 +32,19 @@ For example:
 ```php
 class SayHello extends Routine
 {
-// ...
+    // ...
 
-protected function handle(Arguments $arguments): void
-{
-$this->info($arguments->getOption('-n'));
-//  this will display: Ricardo Pereira
+    protected function handle(Arguments $arguments): void
+    {
+        $this->info($arguments->getOption('-n'));
+        //  this will display: Ricardo Pereira
 
-$this->info($arguments->getOption('-r'));
-//  this will display: Arquitetura Limpa
+        $this->info($arguments->getOption('-r'));
+        //  this will display: Arquitetura Limpa
 
-$this->info($arguments->getOption('-d'));
-//  this will display: 1
-}
+        $this->info($arguments->getOption('-d'));
+        //  this will display: 1
+    }
 }
 ```
 
@@ -62,16 +62,16 @@ For example:
 ```php
 class SayHello extends Routine
 {
-// ...
+    // ...
 
-protected function handle(Arguments $arguments): void
-{
-$this->info($arguments->getArgument(0));
-//  this will display: Teste
+    protected function handle(Arguments $arguments): void
+    {
+        $this->info($arguments->getArgument(0));
+        //  this will display: Teste
 
-$this->info($arguments->getArgument(1));
-//  this will display: Portas e Adaptadores
-}
+        $this->info($arguments->getArgument(1));
+        //  this will display: Portas e Adaptadores
+    }
 }
 ```
 

@@ -5,7 +5,7 @@
 
 ## 1. A biblioteca de mensagens
 
-Além das funcionalidades exclusivas para criação e execução de comandos, freep-console contém uma classe dedicada para a exibição de mensagens no terminal.
+Além das funcionalidades exclusivas para criação e execução de comandos, iquety/console contém uma classe dedicada para a exibição de mensagens no terminal.
 
 Abaixo, os métodos disponíveis na classe `Iquety\Console\Message`:
 

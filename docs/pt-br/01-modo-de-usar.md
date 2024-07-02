@@ -10,61 +10,61 @@ A primeira coisa a fazer é criar os comandos necessários e alocá-los em algum
 ```php
 class DizerOla extends Routine
 {
-/**
-* Pelo menos o método "setName" deverá ser invocado para determinar a palavra
-*/
-protected function initialize(): void
-{
-$this->setName("dizer-ola");
-$this->setDescription("Exibe a mensagem 'olá' no terminal");
-$this->setHowToUse("./example dizer-ola [opcoes]");
+    /**
+     * Pelo menos o método "setName" deverá ser invocado para determinar a palavra 
+     */
+    protected function initialize(): void
+    {
+        $this->setName("dizer-ola");
+        $this->setDescription("Exibe a mensagem 'olá' no terminal");
+        $this->setHowToUse("./example dizer-ola [opcoes]");
 
-// Uma opção obrigatória e valorada.
-// Quando especificada no terminal, deverá vir acompanhada de um valor
-$this->addOption(
-new Option(
-'-l',
-'--ler-arquivo',
-'Lê a mensagem a partir de um arquivo texto',
-Option::REQUIRED | Option::VALUED
-)
-);
+        // Uma opção obrigatória e valorada.
+        // Quando especificada no terminal, deverá vir acompanhada de um valor
+        $this->addOption(
+            new Option(
+                '-l',
+                '--ler-arquivo',
+                'Lê a mensagem a partir de um arquivo texto',
+                Option::REQUIRED | Option::VALUED
+            )
+        );
 
-// Uma opção não-obrigatória
-$this->addOption(
-new Option(
-'-d',
-'--destruir',
-'Apaga o arquivo texto após usá-lo',
-Option::OPTIONAL
-)
-);
-}
+        // Uma opção não-obrigatória
+        $this->addOption(
+            new Option(
+                '-d',
+                '--destruir',
+                'Apaga o arquivo texto após usá-lo',
+                Option::OPTIONAL
+            )
+        );
+    }
 
-/**
-* É neste método que a rotina do comando deverá ser implementada.
-*/
-protected function handle(Arguments $arguments): void
-{
-$message = "Olá";
+    /**
+     * É neste método que a rotina do comando deverá ser implementada.
+     */ 
+    protected function handle(Arguments $arguments): void
+    {
+        $message = "Olá";
 
-if ($arguments->getOption('-l') !== '1') {
-$this->line("Lendo o arquivo texto contendo a mensagem de olá");
-// ... rotina para ler o arquivo texto
-$message = "";
-}
+        if ($arguments->getOption('-l') !== '1') {
+            $this->line("Lendo o arquivo texto contendo a mensagem de olá");
+            // ... rotina para ler o arquivo texto
+            $message = "";
+        }
 
-if ($message === "") {
-$this->error("Não foi possível ler o arquivo texto");
-}
+        if ($message === "") {
+            $this->error("Não foi possível ler o arquivo texto");
+        }
 
-if ($arguments->getOption('-d') === '1') {
-$this->warning("Apagando o arquivo texto usado");
-// ... rotina para apagar o arquivo texto
-}
+        if ($arguments->getOption('-d') === '1') {
+            $this->warning("Apagando o arquivo texto usado");
+            // ... rotina para apagar o arquivo texto
+        }
 
-$this->info($message);
-}
+        $this->info($message);
+    }
 }
 ```
 
@@ -77,7 +77,7 @@ Com os comandos implementados no diretório desejado, é preciso criar uma inst�
 Por fim, basta mandar o Terminal executar os comandos através do método `Terminal->executar()`:
 
 ```php
-// Cria uma instância do Terminal.
+// Cria uma instância do Terminal. 
 $terminal = new Terminal("raiz/da/super/aplicacao");
 
 // Uma dica sobre como o terminal pode ser utilizado
