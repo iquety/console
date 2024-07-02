@@ -15,7 +15,7 @@ class ExampleFourInvalid extends Routine // nome da classe diferente do arquivo
     protected function initialize(): void
     {
         $this->setName("example4");
-        
+
         $this->setDescription("Run the 'example2' routine");
     }
 
