@@ -13,7 +13,10 @@ use Throwable;
 
 class Terminal
 {
-    /** @see https://www.cyberciti.biz/faq/linux-bash-exit-status-set-exit-statusin-bash/ */
+    /**
+     * Para mais informações sobre os status do SHELL
+     * @see https://www.cyberciti.biz/faq/linux-bash-exit-status-set-exit-statusin-bash
+     */
     public const STATUS_SUCCESS = 0;
 
     public const STATUS_ERROR = 126;
@@ -179,7 +182,7 @@ class Terminal
         $this->factoryMessage("'{$name}' routine not found")->error();
 
         (new Help($this))->run($arguments);
-        
+
         $this->executedStatus = self::STATUS_NOT_FOUND;
     }
 

@@ -71,5 +71,19 @@ ou seja, no terminal.
 
 Mais informações da documentação do PHP em [Reserved Variables](https://www.php.net/manual/pt_BR/reserved.variables.argv.php)
 
+### 2.5. Informações sobre a execução
+
+É possível obter informações sobre a execução de uma rotina:
+
+```php
+$terminal->run($argv);
+
+// devolve o nome da rotina executada
+$rotinaExecutada = $terminal->executedRoutine();
+
+// devolve o código da execução (0 = Sucesso, 126 = Erro, 127 = script inexistente)
+$status = $terminal->executedStatus();
+```
+
 [◂ Script de terminal](02-script-de-terminal.md) | [Sumário da Documentação](indice.md) | [Criando Rotinas ▸](04-criando-rotinas.md)
 -- | -- | --
