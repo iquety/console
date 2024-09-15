@@ -13,12 +13,21 @@ use Throwable;
 
 class Terminal
 {
+    /** @see https://www.cyberciti.biz/faq/linux-bash-exit-status-set-exit-statusin-bash/ */
+    public const STATUS_SUCCESS = 0;
+
+    public const STATUS_ERROR = 126;
+
+    public const STATUS_NOT_FOUND = 127;
+
     private string $appPath;
 
     /** @var array<string> */
     private array $directoryList = [];
 
     private string $executedRoutine = "no";
+
+    private int $executedStatus = 0;
 
     private string $howToUse = "";
 
@@ -79,6 +88,8 @@ class Terminal
     public function run(array $arguments): void
     {
         if (isset($arguments[0]) === false) {
+            $this->executedStatus = self::STATUS_ERROR;
+
             return;
         }
 
@@ -94,6 +105,10 @@ class Terminal
             $this->factoryMessage($e->getFile() . " on line " . $e->getLine())->error();
 
             $this->factoryMessage("   " . $e->getMessage())->red();
+
+            if ($this->executedStatus === self::STATUS_SUCCESS) {
+                $this->executedStatus = self::STATUS_ERROR;
+            }
         }
     }
 
@@ -130,6 +145,8 @@ class Terminal
             (new Help($this))->run($arguments);
 
             $this->executedRoutine = Help::class;
+            $this->executedStatus = self::STATUS_SUCCESS;
+
             return;
         }
 
@@ -137,6 +154,8 @@ class Terminal
             $routineClassName = $this->parseClassName($routineFile);
 
             if (class_exists($routineClassName) === false) {
+                $this->executedStatus = self::STATUS_ERROR;
+
                 throw new RuntimeException(
                     "The file '$routineFile' not contains a '$routineClassName' class"
                 );
@@ -152,6 +171,7 @@ class Terminal
             $routineObject->run($arguments);
 
             $this->executedRoutine = $routineClassName;
+            $this->executedStatus = self::STATUS_SUCCESS;
 
             return;
         }
@@ -159,6 +179,8 @@ class Terminal
         $this->factoryMessage("'{$name}' routine not found")->error();
 
         (new Help($this))->run($arguments);
+        
+        $this->executedStatus = self::STATUS_NOT_FOUND;
     }
 
     private function extractNamespace(string $oneFile): string
@@ -217,5 +239,10 @@ class Terminal
     public function executedRoutine(): string
     {
         return $this->executedRoutine;
+    }
+
+    public function executedStatus(): int
+    {
+        return $this->executedStatus;
     }
 }

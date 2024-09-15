@@ -60,6 +60,7 @@ class TerminalTest extends TestCase
         $result = $this->gotcha($terminal, fn($terminal) => $terminal->run([]));
 
         $this->assertEquals("no", $terminal->executedRoutine());
+        $this->assertEquals(Terminal::STATUS_ERROR, $terminal->executedStatus());
 
         $this->assertEmpty($result);
     }
@@ -72,7 +73,7 @@ class TerminalTest extends TestCase
         $result = $this->gotcha($terminal, fn($terminal) => $terminal->run([ "blabla" ]));
 
         $this->assertEquals("no", $terminal->executedRoutine());
-
+        $this->assertEquals(Terminal::STATUS_NOT_FOUND, $terminal->executedStatus());
 
         foreach ($this->helpMessageLines() as $texto) {
             $this->assertStringContainsString($texto, $result);
@@ -87,6 +88,7 @@ class TerminalTest extends TestCase
         $result = $this->gotcha($terminal, fn($terminal) => $terminal->run([ "example1" ]));
 
         $this->assertEquals(ExampleOne::class, $terminal->executedRoutine());
+        $this->assertEquals(Terminal::STATUS_SUCCESS, $terminal->executedStatus());
 
         $this->assertStringContainsString("Routine 'example1' executed", $result);
     }
@@ -102,6 +104,7 @@ class TerminalTest extends TestCase
         );
 
         $this->assertEquals(ExampleTwo::class, $terminal->executedRoutine());
+        $this->assertEquals(Terminal::STATUS_SUCCESS, $terminal->executedStatus());
 
         $this->assertStringContainsString("Routine 'example2' executed", $result);
     }
@@ -114,6 +117,7 @@ class TerminalTest extends TestCase
         $result = $this->gotcha($terminal, fn($terminal) => $terminal->run([ "example-exception" ]));
 
         $this->assertEquals("no", $terminal->executedRoutine());
+        $this->assertEquals(Terminal::STATUS_ERROR, $terminal->executedStatus());
 
         $this->assertStringContainsString("Routine 'example-exception' threw exception", $result);
     }
@@ -127,6 +131,7 @@ class TerminalTest extends TestCase
         $result = $this->gotcha($terminal, fn($terminal) => $terminal->run([ "bug" ]));
 
         $this->assertEquals("no", $terminal->executedRoutine());
+        $this->assertEquals(Terminal::STATUS_ERROR, $terminal->executedStatus());
 
         $this->assertStringContainsString("Unable to extract namespace from file", $result);
     }
@@ -140,6 +145,7 @@ class TerminalTest extends TestCase
         $result = $this->gotcha($terminal, fn($terminal) => $terminal->run([ "example4" ]));
 
         $this->assertEquals("no", $terminal->executedRoutine());
+        $this->assertEquals(Terminal::STATUS_ERROR, $terminal->executedStatus());
 
         $this->assertStringContainsString(
             "The file '" . __DIR__ . "/FakeApp/ContextFour/ExampleFour.php' " .
