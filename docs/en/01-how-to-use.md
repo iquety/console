@@ -3,7 +3,34 @@
 [◂ Documentation Summary](index.md) | [Terminal script ▸](02-terminal-script.md)
 -- | --
 
-## 1. Implement routines
+## 1. Installation
+
+### Default
+
+To install the composer package:
+
+```bash
+composer require iquety/console
+```
+
+### Cross-reference
+
+The `iquety/docmap` package has a cross-reference with `iquety/console`. Therefore, if you need to use both packages in the same project, you must let `composer` manage them automatically, leaving the configuration as follows:
+
+```json
+"require": {
+    ...
+    "iquety/console": "*",
+    ...
+},
+"require-dev": {
+    ...
+    "iquety/docmap": "*",
+    ...
+},
+```
+
+## 2. Implement routines
 
 The first thing to do is create the necessary routines and place them in some
 directory. A routine must be implemented based on the abstract class
@@ -72,7 +99,7 @@ class SayHello extends Routine
 
 More information at [Creating Routines](04-creating-routines.md).
 
-## 2. Criando o terminal
+## 3. Criando o terminal
 
 With the routines implemented in the desired directory, it is necessary to create an instance of `Iquety\Console\Terminal` and tell it which directories contain the implemented routines.
 

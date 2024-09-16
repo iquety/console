@@ -2,7 +2,52 @@
 
 --page-nav--
 
-## 1. Implementar comandos
+## 1. Instalação
+
+### Modo Padrão
+
+Para instalar o pacote do composer:
+
+```bash
+composer require iquety/console
+```
+
+### Referência cruzada
+
+O pacote `iquety/docmap` possui uma referência cruzada com `iquety/console`. Por isso, se for necessário usar ambos os pacotes no mesmo projeto, é preciso deixar o `composer` gerenciá-los automaticamente,
+deixando a configuracã́o da seguinte forma:
+
+```json
+"require": {
+    ...
+    "iquety/console": "*",
+    ...
+},
+"require-dev": {
+    ...
+    "iquety/docmap": "*",
+    ...
+},
+```
+
+### Cross-reference
+
+The `iquety/docmap` package has a cross-reference with `iquety/console`. Therefore, if you need to use both packages in the same project, you must let `composer` manage them automatically, leaving the configuration as follows:
+
+```json
+"require": {
+    ...
+    "iquety/console": "*",
+    ...
+},
+"require-dev": {
+    ...
+    "iquety/docmap": "*",
+    ...
+},
+```
+
+## 2. Implementar comandos
 
 A primeira coisa a fazer é criar as rotinas necessárias e alocá-las em algum diretório.
 Uma rotina deve ser implementada com base na classe abstrata `Iquety\Console\Routine`,
@@ -71,7 +116,7 @@ class DizerOla extends Routine
 
 Mais informações em [Criando Rotinas](04-criando-rotinas.md).
 
-## 2. Criando o terminal
+## 3. Criando o terminal
 
 Com as rotinas implementadas no diretório desejado, é preciso criar uma instância de
 `Iquety\Console\Terminal` e dizer para ela quais são os diretórios contendo as rotinas
