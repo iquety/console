@@ -4,11 +4,6 @@
     "description": "Toolkit for implementing PHP-based terminal routines",
     "keywords": ["framework", "tool", "console"],
     "license": "MIT",
-    "extra": {
-        "branch-alias": {
-            "dev-main": "2.1.0"
-        }
-    },
     "require": {
         "php": "^8.3.0",
         "iquety/security": "dev-main"
