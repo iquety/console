@@ -24,7 +24,7 @@ use Iquety\Console\Terminal;
 // Remove o primeiro argumento do usuário contendo o nome do script (./example)
 array_shift($argv);
 
-$terminal = new Terminal('/diretorio/real/da/aplicacao');
+$terminal = new Terminal(__DIR__);
 $terminal->setHowToUse("./example routine [options] [arguments]");
 $terminal->loadRoutinesFrom(__DIR__ . "/tests/FakeApp/ContextOne/src/Routines");
 $terminal->loadRoutinesFrom(__DIR__ . "/tests/FakeApp/ContextTwo");

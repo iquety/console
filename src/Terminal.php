@@ -90,13 +90,10 @@ class Terminal
      */
     public function run(array $arguments): void
     {
-        if (isset($arguments[0]) === false) {
-            $this->executedStatus = self::STATUS_ERROR;
-
-            return;
-        }
-
-        if (in_array($arguments[0], ['--help', '-h']) === true) {
+        if (
+            isset($arguments[0]) === false
+            || in_array($arguments[0], ['--help', '-h']) === true
+        ) {
             $arguments[0] = "help";
         }
 

@@ -6,6 +6,7 @@ namespace Tests;
 
 use Iquety\Console\Terminal;
 use InvalidArgumentException;
+use Iquety\Console\Routines\Help;
 use Tests\FakeApp\ContextOne\src\Routines\ExampleOne;
 use Tests\FakeApp\ContextTwo\ExampleTwo;
 
@@ -59,10 +60,10 @@ class TerminalTest extends TestCase
 
         $result = $this->gotcha($terminal, fn($terminal) => $terminal->run([]));
 
-        $this->assertEquals("no", $terminal->executedRoutine());
-        $this->assertEquals(Terminal::STATUS_ERROR, $terminal->executedStatus());
+        $this->assertEquals(Help::class, $terminal->executedRoutine());
+        $this->assertEquals(Terminal::STATUS_SUCCESS, $terminal->executedStatus());
 
-        $this->assertEmpty($result);
+        $this->assertStringContainsString('How to use:', $result);
     }
 
     /** @test */

@@ -23,6 +23,13 @@ if [ "$1" == "lint" ]; then
     exit;
 fi
 
+if [ "$1" == "bash" ]; then
+    docker exec -it $PHP_CONTAINER /bin/bash
+    
+    exit;
+fi
+
+
 if [ "$1" == "install" ]; then
     docker exec -it $PHP_CONTAINER /bin/bash -c "COMPOSER_ROOT_VERSION=dev-main composer install"
 
