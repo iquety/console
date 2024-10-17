@@ -7,7 +7,6 @@ namespace Tests\PhpUnit;
 use Iquety\Console\Option;
 use Iquety\Console\PhpUnit\Constraints\OptionIsNotValued;
 use PHPUnit\Framework\ExpectationFailedException;
-use PHPUnit\Framework\TestFailure;
 
 class OptionIsNotValuedTest extends ConstraintTestCase
 {

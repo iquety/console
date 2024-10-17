@@ -7,6 +7,7 @@ namespace Tests;
 use Iquety\Console\Arguments;
 use Iquety\Console\Parser;
 use Iquety\Console\Option;
+use Iquety\Console\OutputException;
 use RuntimeException;
 
 /** @SuppressWarnings(PHPMD.TooManyPublicMethods) */
@@ -44,7 +45,7 @@ class ParserTest extends TestCase
     /** @test */
     public function requiredOptionValueException(): void
     {
-        $this->expectException(RuntimeException::class);
+        $this->expectException(OutputException::class);
         $this->expectExceptionMessage("The '-a' option requires a value");
 
         $interpretador = new Parser([
@@ -72,7 +73,7 @@ class ParserTest extends TestCase
     /** @test */
     public function requiredOptionException(): void
     {
-        $this->expectException(RuntimeException::class);
+        $this->expectException(OutputException::class);
         $this->expectExceptionMessage('Required options: -a|--aaa');
 
         $interpretador = new Parser([
@@ -119,7 +120,7 @@ class ParserTest extends TestCase
     /** @test */
     public function requiredBooleanOptionException(): void
     {
-        $this->expectException(RuntimeException::class);
+        $this->expectException(OutputException::class);
         $this->expectExceptionMessage('Required options: -a|--aaa');
 
         $interpretador = new Parser([

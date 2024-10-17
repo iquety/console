@@ -124,6 +124,38 @@ class TerminalTest extends TestCase
     }
 
     /** @test */
+    public function exampleRoutineRequired(): void
+    {
+        $terminal = $this->terminalFactory();
+
+        $result = $this->gotcha($terminal, fn($terminal) => $terminal->run([ "example-required" ]));
+
+        $this->assertEquals("no", $terminal->executedRoutine());
+        $this->assertEquals(Terminal::STATUS_ERROR, $terminal->executedStatus());
+
+        $this->assertStringContainsString(
+            "   Required options: -v|--very-very-very-more-very-long-option",
+            $result
+        );
+    }
+
+    /** @test */
+    public function exampleRoutineRequiredAndValued(): void
+    {
+        $terminal = $this->terminalFactory();
+
+        $result = $this->gotcha($terminal, fn($terminal) => $terminal->run([ "example-required", '-v' ]));
+
+        $this->assertEquals("no", $terminal->executedRoutine());
+        $this->assertEquals(Terminal::STATUS_ERROR, $terminal->executedStatus());
+
+        $this->assertStringContainsString(
+            "   The '-v' option requires a value",
+            $result
+        );
+    }
+
+    /** @test */
     public function exampleRoutineBadImplementation(): void
     {
         $terminal = $this->terminalFactory();

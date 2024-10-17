@@ -101,10 +101,16 @@ class Terminal
 
         try {
             $this->runRoutine($routineName, $arguments);
-        } catch (Throwable $e) {
-            $this->factoryMessage($e->getFile() . " on line " . $e->getLine())->error();
+        } catch (OutputException $exception) {
+            $this->factoryMessage("   " . $exception->getMessage())->yellow();
 
-            $this->factoryMessage("   " . $e->getMessage())->red();
+            if ($this->executedStatus === self::STATUS_SUCCESS) {
+                $this->executedStatus = self::STATUS_ERROR;
+            }
+        } catch (Throwable $exception) {
+            $this->factoryMessage($exception->getFile() . " on line " . $exception->getLine())->error();
+
+            $this->factoryMessage("   " . $exception->getMessage())->red();
 
             if ($this->executedStatus === self::STATUS_SUCCESS) {
                 $this->executedStatus = self::STATUS_ERROR;

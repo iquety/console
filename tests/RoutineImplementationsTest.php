@@ -8,6 +8,7 @@ use Iquety\Console\Arguments;
 use Iquety\Console\Routine;
 use Iquety\Console\Option;
 use InvalidArgumentException;
+use Iquety\Console\OutputException;
 use RuntimeException;
 
 /** @SuppressWarnings(PHPMD.UnusedFormalParameter) */
@@ -89,7 +90,7 @@ class RoutineImplementationsTest extends TestCase
     /** @test */
     public function implementationWithRequiredOption(): void
     {
-        $this->expectException(RuntimeException::class);
+        $this->expectException(OutputException::class);
         $this->expectExceptionMessage('Required options: -p|--port');
 
         $object = new class ($this->terminalFactory()) extends Routine {

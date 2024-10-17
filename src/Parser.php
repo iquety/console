@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Iquety\Console;
 
-use RuntimeException;
-
 class Parser
 {
     /**
@@ -108,7 +106,7 @@ class Parser
         }
 
         if ($compositeValue === []) {
-            throw new RuntimeException("The '{$notation}' option requires a value");
+            throw new OutputException("The '{$notation}' option requires a value");
         }
 
         $this->flaggedOptions[$mainNotation] = implode(" ", $compositeValue);
@@ -236,6 +234,6 @@ class Parser
 
         $tip = implode(", ", $requireds);
 
-        throw new RuntimeException(sprintf("Required options: %s", $tip));
+        throw new OutputException(sprintf("Required options: %s", $tip));
     }
 }
