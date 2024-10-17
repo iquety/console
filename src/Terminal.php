@@ -102,7 +102,7 @@ class Terminal
         try {
             $this->runRoutine($routineName, $arguments);
         } catch (OutputException $exception) {
-            $this->factoryMessage("   " . $exception->getMessage())->yellow();
+            $this->factoryMessage("   " . $exception->getMessage())->yellowLn();
 
             if ($this->executedStatus === self::STATUS_SUCCESS) {
                 $this->executedStatus = self::STATUS_ERROR;
@@ -110,7 +110,7 @@ class Terminal
         } catch (Throwable $exception) {
             $this->factoryMessage($exception->getFile() . " on line " . $exception->getLine())->error();
 
-            $this->factoryMessage("   " . $exception->getMessage())->red();
+            $this->factoryMessage("   " . $exception->getMessage())->redLn();
 
             if ($this->executedStatus === self::STATUS_SUCCESS) {
                 $this->executedStatus = self::STATUS_ERROR;
