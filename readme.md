@@ -98,12 +98,12 @@ $terminal->run($argv);
 
 ## Characteristics
 
-- Made for PHP 8.3 or higher;
 - Codified with best practices and maximum quality;
 - Well documented and IDE friendly;
 - Made with TDD (Test Driven Development);
 - Implemented with unit tests using PHPUnit;
 - Made with :heart: &amp; :coffee:.
+
 ## Credits
 
 [Ricardo Pereira Dias](https://www.ricardopedias.com.br)
