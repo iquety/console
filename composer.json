@@ -5,7 +5,7 @@
     "keywords": ["framework", "tool", "console"],
     "license": "MIT",
     "require": {
-        "php": "^8.3.0",
+        "php": "^8.4.0",
         "iquety/security": "dev-main"
     },
     "require-dev": {
