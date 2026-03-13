@@ -17,6 +17,11 @@ class RoutineHasOption extends Constraint
         $this->expected = $expected;
     }
 
+    public function toString(): string
+    {
+        return "has option '$this->expected'";
+    }
+
     /**
      * Avalia a restrição para o argumento $other.
      * @param Routine $other
@@ -49,10 +54,5 @@ class RoutineHasOption extends Constraint
     protected function failureDescription($other): string
     {
         return 'an routine ' . $this->toString();
-    }
-
-    public function toString(): string
-    {
-        return "has option '$this->expected'";
     }
 }

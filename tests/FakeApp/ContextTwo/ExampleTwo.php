@@ -12,7 +12,7 @@ class ExampleTwo extends Routine
 {
     protected function initialize(): void
     {
-        $this->setName("very-very-very-more-very-long-routine");
+        $this->setName('very-very-very-more-very-long-routine');
 
         $this->setDescription("Run the 'example2' routine");
     }

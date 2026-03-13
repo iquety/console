@@ -12,8 +12,34 @@ class Composition
     private array $compositeValue = [];
 
     /** @param array<int,string> $standAloneOptions */
-    public function __construct(private array $standAloneOptions)
+    public function __construct(private array $standAloneOptions) {}
+
+    /** @return array<int,string> */
+    public function valores(): array
     {
+        $valueList = [];
+
+        foreach ($this->standAloneOptions as $argument) {
+            if ($this->isOpeningArgument($argument) === true) {
+                $this->composeValue($argument);
+                continue;
+            }
+
+            if ($this->isClosingArgument($argument) === true) {
+                $this->composeValue($argument);
+                $valueList[] = $this->compositeValue();
+                continue;
+            }
+
+            if ($this->composing() === true) {
+                $this->composeValue($argument);
+                continue;
+            }
+
+            $valueList[] = $argument;
+        }
+
+        return $valueList;
     }
 
     private function containsOpeningDoubleQuotes(string $argument): bool
@@ -61,7 +87,7 @@ class Composition
 
     private function compositeValue(): string
     {
-        $value = implode(" ", $this->compositeValue);
+        $value = implode(' ', $this->compositeValue);
 
         $this->inComposition = false;
         $this->compositeValue = [];
@@ -72,33 +98,5 @@ class Composition
     private function removeQuotes(string $argument): string
     {
         return trim(trim($argument, "'"), '"');
-    }
-
-    /** @return array<int,string> */
-    public function valores(): array
-    {
-        $valueList = [];
-
-        foreach ($this->standAloneOptions as $argument) {
-            if ($this->isOpeningArgument($argument) === true) {
-                $this->composeValue($argument);
-                continue;
-            }
-
-            if ($this->isClosingArgument($argument) === true) {
-                $this->composeValue($argument);
-                $valueList[] = $this->compositeValue();
-                continue;
-            }
-
-            if ($this->composing() === true) {
-                $this->composeValue($argument);
-                continue;
-            }
-
-            $valueList[] = $argument;
-        }
-
-        return $valueList;
     }
 }

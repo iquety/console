@@ -17,6 +17,11 @@ class RoutineCountOptions extends Constraint
         $this->expectedCount = $expectedCount;
     }
 
+    public function toString(): string
+    {
+        return sprintf('options count matches %d', $this->expectedCount);
+    }
+
     /**
      * Avalia a restrição para o argumento $other.
      * @param Routine $other
@@ -38,10 +43,5 @@ class RoutineCountOptions extends Constraint
     protected function failureDescription($other): string
     {
         return 'an routine ' . $this->toString();
-    }
-
-    public function toString(): string
-    {
-        return sprintf('options count matches %d', $this->expectedCount);
     }
 }

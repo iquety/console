@@ -15,9 +15,7 @@ class RoutineGetDataTest extends TestCase
     public function getAppPath(): void
     {
         $object = new class ($this->terminalFactory()) extends Routine {
-            protected function initialize(): void
-            {
-            }
+            protected function initialize(): void {}
 
             protected function handle(Arguments $arguments): void
             {
@@ -27,106 +25,96 @@ class RoutineGetDataTest extends TestCase
 
         $result = $this->gotcha($object, fn($terminal) => $terminal->run([]));
 
-        $this->assertStringContainsString(__DIR__ . "/FakeApp", $result);
+        $this->assertStringContainsString(__DIR__ . '/FakeApp', $result);
     }
 
     /** @test */
     public function getAppPathWithSufix(): void
     {
         $object = new class ($this->terminalFactory()) extends Routine {
-            protected function initialize(): void
-            {
-            }
+            protected function initialize(): void {}
 
             protected function handle(Arguments $arguments): void
             {
-                $this->line($this->getAppPath("teste/de/sufixo"));
+                $this->line($this->getAppPath('teste/de/sufixo'));
             }
         };
 
         $result = $this->gotcha($object, fn($terminal) => $terminal->run([]));
 
-        $this->assertStringContainsString(__DIR__ . "/FakeApp/teste/de/sufixo", $result);
+        $this->assertStringContainsString(__DIR__ . '/FakeApp/teste/de/sufixo', $result);
     }
 
     /** @test */
     public function getAppPathWithCleanedBarsSufix(): void
     {
         $object = new class ($this->terminalFactory()) extends Routine {
-            protected function initialize(): void
-            {
-            }
+            protected function initialize(): void {}
 
             protected function handle(Arguments $arguments): void
             {
                 // barras são ajustadas automaticamente na montagem do caminho com sufixo
-                $this->line($this->getAppPath("/teste/de/sufixo"));
+                $this->line($this->getAppPath('/teste/de/sufixo'));
             }
         };
 
         $result = $this->gotcha($object, fn($terminal) => $terminal->run([]));
 
-        $this->assertStringContainsString(__DIR__ . "/FakeApp/teste/de/sufixo", $result);
+        $this->assertStringContainsString(__DIR__ . '/FakeApp/teste/de/sufixo', $result);
     }
 
     /** @test */
     public function getAppPathWithCleanedRightBarsSufix(): void
     {
         $object = new class ($this->terminalFactory()) extends Routine {
-            protected function initialize(): void
-            {
-            }
+            protected function initialize(): void {}
 
             protected function handle(Arguments $arguments): void
             {
                 // barras são ajustadas automaticamente na montagem do caminho com sufixo
-                $this->line($this->getAppPath("teste/de/sufixo"));
+                $this->line($this->getAppPath('teste/de/sufixo'));
             }
         };
 
         $result = $this->gotcha($object, fn($terminal) => $terminal->run([]));
 
-        $this->assertStringContainsString(__DIR__ . "/FakeApp/teste/de/sufixo", $result);
+        $this->assertStringContainsString(__DIR__ . '/FakeApp/teste/de/sufixo', $result);
     }
 
     /** @test */
     public function getAppPathWithCleanedLeftBarsSufix(): void
     {
         $object = new class ($this->terminalFactory()) extends Routine {
-            protected function initialize(): void
-            {
-            }
+            protected function initialize(): void {}
 
             protected function handle(Arguments $arguments): void
             {
                 // barras são ajustadas automaticamente na montagem do caminho com sufixo
-                $this->line($this->getAppPath("/teste/de/sufixo"));
+                $this->line($this->getAppPath('/teste/de/sufixo'));
             }
         };
 
         $result = $this->gotcha($object, fn($terminal) => $terminal->run([]));
 
-        $this->assertStringContainsString(__DIR__ . "/FakeApp/teste/de/sufixo", $result);
+        $this->assertStringContainsString(__DIR__ . '/FakeApp/teste/de/sufixo', $result);
     }
 
     /** @test */
     public function getArgumentList(): void
     {
         $object = new class ($this->terminalFactory()) extends Routine {
-            protected function initialize(): void
-            {
-            }
+            protected function initialize(): void {}
 
             protected function handle(Arguments $arguments): void
             {
                 // barras são ajustadas automaticamente na montagem do caminho com sufixo
-                $this->line((string)json_encode($arguments->getArgumentList()));
+                $this->line((string) json_encode($arguments->getArgumentList()));
             }
         };
 
-        $result = $this->gotcha($object, fn($terminal) => $terminal->run([ "Ricardo Pereira" ]));
+        $result = $this->gotcha($object, fn($terminal) => $terminal->run([ 'Ricardo Pereira' ]));
 
-        $this->assertEquals(json_encode([ "Ricardo Pereira" ]) . "\n", $result);
+        $this->assertEquals(json_encode([ 'Ricardo Pereira' ]) . "\n", $result);
     }
 
     /** @test */
@@ -136,9 +124,7 @@ class RoutineGetDataTest extends TestCase
         $this->expectExceptionMessage("Option '-x' is invalid");
 
         $object = new class ($this->terminalFactory()) extends Routine {
-            protected function initialize(): void
-            {
-            }
+            protected function initialize(): void {}
 
             protected function handle(Arguments $arguments): void
             {

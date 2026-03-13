@@ -13,7 +13,7 @@ class ExampleException extends Routine
 {
     public function initialize(): void
     {
-        $this->setName("example-exception");
+        $this->setName('example-exception');
 
         $this->setDescription("Run the 'example-exception' routine");
     }

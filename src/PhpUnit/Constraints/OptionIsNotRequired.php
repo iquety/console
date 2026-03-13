@@ -8,6 +8,10 @@ use Iquety\Console\Option;
 
 class OptionIsNotRequired extends OptionIsRequired
 {
+    public function toString(): string
+    {
+        return 'is not required';
+    }
     /**
      * Avalia a restrição para o argumento $other.
      * @param Option $other
@@ -15,10 +19,5 @@ class OptionIsNotRequired extends OptionIsRequired
     protected function matches($other): bool
     {
         return parent::matches($other) === false;
-    }
-
-    public function toString(): string
-    {
-        return "is not required";
     }
 }

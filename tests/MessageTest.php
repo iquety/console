@@ -11,13 +11,6 @@ use PHPUnit\Framework\TestCase;
 /** @SuppressWarnings(PHPMD.TooManyPublicMethods) */
 class MessageTest extends TestCase
 {
-    private function gotcha(Message $object, Closure $callback): string
-    {
-        ob_start();
-        $callback($object);
-        return (string)ob_get_clean();
-    }
-
     /** @test */
     public function blue(): void
     {
@@ -202,7 +195,7 @@ class MessageTest extends TestCase
             fn(Message $object) => $object->output()
         );
 
-        $this->assertSame("Simple message", $result);
+        $this->assertSame('Simple message', $result);
     }
 
     /** @test */
@@ -242,10 +235,10 @@ class MessageTest extends TestCase
 
         $result = $this->gotcha(
             $message,
-            fn(Message $object) => $object->$methodName()
+            fn(Message $object) => $object->{$methodName}()
         );
 
-        $this->assertSame("", $result);
+        $this->assertSame('', $result);
     }
 
     /**
@@ -261,9 +254,15 @@ class MessageTest extends TestCase
 
         $result = $this->gotcha(
             $message,
-            fn(Message $object) => $object->$methodName()
+            fn(Message $object) => $object->{$methodName}()
         );
 
-        $this->assertSame("", $result);
+        $this->assertSame('', $result);
+    }
+    private function gotcha(Message $object, Closure $callback): string
+    {
+        ob_start();
+        $callback($object);
+        return (string) ob_get_clean();
     }
 }

@@ -8,6 +8,10 @@ use Iquety\Console\Option;
 
 class OptionIsNotBoolean extends OptionIsBoolean
 {
+    public function toString(): string
+    {
+        return 'is not boolean';
+    }
     /**
      * Avalia a restrição para o argumento $other.
      * @param Option $other
@@ -15,10 +19,5 @@ class OptionIsNotBoolean extends OptionIsBoolean
     protected function matches($other): bool
     {
         return parent::matches($other) === false;
-    }
-
-    public function toString(): string
-    {
-        return "is not boolean";
     }
 }

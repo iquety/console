@@ -1,4 +1,5 @@
 <?php
+
 // phpcs:ignoreFile
 
 declare(strict_types=1);
@@ -13,8 +14,8 @@ class Bug extends Routine
 {
     protected function initialize(): void
     {
-        $this->setName("bug");
-        $this->setDescription("Run the buggy routine");
+        $this->setName('bug');
+        $this->setDescription('Run the buggy routine');
     }
 
     protected function handle(Arguments $arguments): void

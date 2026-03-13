@@ -6,6 +6,4 @@ namespace Iquety\Console;
 
 use Exception;
 
-class OutputException extends Exception
-{
-}
+class OutputException extends Exception {}

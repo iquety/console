@@ -17,8 +17,7 @@ class Arguments
         private array $notationMap,
         private array $withFlag,
         private array $standAlone
-    ) {
-    }
+    ) {}
 
     public function getArgument(int $position): ?string
     {
@@ -45,6 +44,6 @@ class Arguments
         }
 
         $mainNotation = $this->notationMap[$notation];
-        return $this->withFlag[$mainNotation] ?? "";
+        return $this->withFlag[$mainNotation] ?? '';
     }
 }

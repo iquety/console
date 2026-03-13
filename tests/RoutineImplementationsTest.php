@@ -9,7 +9,6 @@ use Iquety\Console\Routine;
 use Iquety\Console\Option;
 use InvalidArgumentException;
 use Iquety\Console\OutputException;
-use RuntimeException;
 
 /** @SuppressWarnings(PHPMD.UnusedFormalParameter) */
 class RoutineImplementationsTest extends TestCase
@@ -25,8 +24,8 @@ class RoutineImplementationsTest extends TestCase
                 $this->setHowToUse('how to use description');
 
                 // Por padrao, um comando tem uma opcao '-h' pré adicioada
-                $this->addOption(new Option("-a", "--aaa", 'Option description', Option::OPTIONAL));
-                $this->addOption(new Option("-b", "--bbb", 'Option description', Option::OPTIONAL));
+                $this->addOption(new Option('-a', '--aaa', 'Option description', Option::OPTIONAL));
+                $this->addOption(new Option('-b', '--bbb', 'Option description', Option::OPTIONAL));
             }
 
             protected function handle(Arguments $arguments): void
@@ -35,9 +34,9 @@ class RoutineImplementationsTest extends TestCase
             }
         };
 
-        $this->assertRoutineHasName("routine-name", $routine);
-        $this->assertRoutineHasDescription("routine description", $routine);
-        $this->assertRoutineHasHowToUse("how to use description", $routine);
+        $this->assertRoutineHasName('routine-name', $routine);
+        $this->assertRoutineHasDescription('routine description', $routine);
+        $this->assertRoutineHasHowToUse('how to use description', $routine);
         $this->assertCountRoutineOptions(3, $routine);
 
         $this->assertRoutineHasOption('-a', $routine);
@@ -52,7 +51,7 @@ class RoutineImplementationsTest extends TestCase
     public function implementationWithInvalidName(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage("The name of a routine must be in kebab-case format. Example: routine-name");
+        $this->expectExceptionMessage('The name of a routine must be in kebab-case format. Example: routine-name');
 
         new class ($this->terminalFactory()) extends Routine {
             protected function initialize(): void
@@ -60,9 +59,7 @@ class RoutineImplementationsTest extends TestCase
                 $this->setName('teste com espaço');
             }
 
-            protected function handle(Arguments $arguments): void
-            {
-            }
+            protected function handle(Arguments $arguments): void {}
         };
     }
 
@@ -73,18 +70,18 @@ class RoutineImplementationsTest extends TestCase
             protected function initialize(): void
             {
                 $this->setName('teste');
-                $this->addOption(new Option("-p", "--port", 'Descricao opcao 1', Option::REQUIRED));
+                $this->addOption(new Option('-p', '--port', 'Descricao opcao 1', Option::REQUIRED));
             }
 
             protected function handle(Arguments $arguments): void
             {
-                $this->line("teste");
+                $this->line('teste');
             }
         };
 
-        $result = $this->gotcha($object, fn($terminal) => $terminal->run([ "-p", '8080' ]));
+        $result = $this->gotcha($object, fn($terminal) => $terminal->run([ '-p', '8080' ]));
 
-        $this->assertStringContainsString("teste", $result);
+        $this->assertStringContainsString('teste', $result);
     }
 
     /** @test */
@@ -96,12 +93,10 @@ class RoutineImplementationsTest extends TestCase
         $object = new class ($this->terminalFactory()) extends Routine {
             protected function initialize(): void
             {
-                $this->addOption(new Option("-p", "--port", 'Descricao opcao 1', Option::REQUIRED));
+                $this->addOption(new Option('-p', '--port', 'Descricao opcao 1', Option::REQUIRED));
             }
 
-            protected function handle(Arguments $arguments): void
-            {
-            }
+            protected function handle(Arguments $arguments): void {}
         };
 
         $object->run([]);

@@ -28,18 +28,18 @@ class Terminal
     /** @var array<string> */
     private array $directoryList = [];
 
-    private string $executedRoutine = "no";
+    private string $executedRoutine = 'no';
 
     private int $executedStatus = 0;
 
-    private string $howToUse = "";
+    private string $howToUse = '';
 
     public function __construct(string $appPath)
     {
         try {
             $realPath = (new Path($appPath))->getAbsolutePath();
         } catch (RuntimeException) {
-            throw new InvalidArgumentException("The specified application directory does not exist");
+            throw new InvalidArgumentException('The specified application directory does not exist');
         }
 
         $this->appPath = $realPath;
@@ -50,11 +50,6 @@ class Terminal
     public function factoryMessage(string $message): Message
     {
         return new Message($message);
-    }
-
-    private function filesystem(string $contextPath): Filesystem
-    {
-        return new Filesystem($contextPath);
     }
 
     public function setHowToUse(string $text): void
@@ -77,7 +72,7 @@ class Terminal
         try {
             $realPath = (new Path($routinesPath))->getAbsolutePath();
         } catch (RuntimeException) {
-            throw new InvalidArgumentException("The directory specified for routines does not exist");
+            throw new InvalidArgumentException('The directory specified for routines does not exist');
         }
 
         $this->directoryList[] = $realPath;
@@ -94,7 +89,7 @@ class Terminal
             isset($arguments[0]) === false
             || in_array($arguments[0], ['--help', '-h']) === true
         ) {
-            $arguments[0] = "help";
+            $arguments[0] = 'help';
         }
 
         $routineName = array_shift($arguments);
@@ -102,15 +97,15 @@ class Terminal
         try {
             $this->runRoutine($routineName, $arguments);
         } catch (OutputException $exception) {
-            $this->factoryMessage("   " . $exception->getMessage())->yellowLn();
+            $this->factoryMessage('   ' . $exception->getMessage())->yellowLn();
 
             if ($this->executedStatus === self::STATUS_SUCCESS) {
                 $this->executedStatus = self::STATUS_ERROR;
             }
         } catch (Throwable $exception) {
-            $this->factoryMessage($exception->getFile() . " on line " . $exception->getLine())->error();
+            $this->factoryMessage($exception->getFile() . ' on line ' . $exception->getLine())->error();
 
-            $this->factoryMessage("   " . $exception->getMessage())->redLn();
+            $this->factoryMessage('   ' . $exception->getMessage())->redLn();
 
             if ($this->executedStatus === self::STATUS_SUCCESS) {
                 $this->executedStatus = self::STATUS_ERROR;
@@ -147,7 +142,7 @@ class Terminal
 
         $allRoutines = $this->getRoutineList();
 
-        if ($routineName === "Help") {
+        if ($routineName === 'Help') {
             (new Help($this))->run($arguments);
 
             $this->executedRoutine = Help::class;
@@ -189,57 +184,10 @@ class Terminal
         $this->executedStatus = self::STATUS_NOT_FOUND;
     }
 
-    private function extractNamespace(string $oneFile): string
-    {
-        $pathInfo = new Path($oneFile);
-        $contextPath = $pathInfo->getDirectory();
-        $file = $pathInfo->getFile();
-
-        $allLines = $this->filesystem($contextPath)->getFileRows($file);
-        foreach ($allLines as $line) {
-            $line = (string)$line;
-
-            if (str_starts_with(trim($line), "namespace") === true) {
-                $limit = strpos($line, ';');
-                $limit = $limit === false ? null : $limit;
-
-                $line = substr($line, 0, $limit);
-
-                return trim(str_replace("namespace ", "", $line));
-            }
-        }
-
-        throw new RuntimeException("Unable to extract namespace from file '{$oneFile}'");
-    }
-
-    private function extractClassName(string $routineFile): string
-    {
-        return str_replace('.php', '', array_slice(explode("/", $routineFile), -1)[0]);
-    }
-
     public function parseClassName(string $routineFile): string
     {
         return $this->extractNamespace($routineFile)
-            . "\\" . $this->extractClassName($routineFile);
-    }
-
-    private function normalizeRoutineName(string $kebabCaseName): string
-    {
-        // make:user-controller -> [Make, User-controller]
-        $kebabCase = array_map(
-            fn($noh) => ucfirst($noh),
-            explode(":", $kebabCaseName)
-        );
-
-        $nameWithoutAColon = implode("", $kebabCase); // MakeUser-controller
-
-        // MakeUser-controller -> [MakeUser, Controller]
-        $pascalCase = array_map(
-            fn($noh) => ucfirst($noh),
-            explode("-", $nameWithoutAColon)
-        );
-
-        return implode("", $pascalCase); // MakeUserController
+            . '\\' . $this->extractClassName($routineFile);
     }
 
     public function executedRoutine(): string
@@ -250,5 +198,57 @@ class Terminal
     public function executedStatus(): int
     {
         return $this->executedStatus;
+    }
+
+    private function filesystem(string $contextPath): Filesystem
+    {
+        return new Filesystem($contextPath);
+    }
+
+    private function extractNamespace(string $oneFile): string
+    {
+        $pathInfo = new Path($oneFile);
+        $contextPath = $pathInfo->getDirectory();
+        $file = $pathInfo->getFile();
+
+        $allLines = $this->filesystem($contextPath)->getFileRows($file);
+        foreach ($allLines as $line) {
+            $line = (string) $line;
+
+            if (str_starts_with(trim($line), 'namespace') === true) {
+                $limit = strpos($line, ';');
+                $limit = $limit === false ? null : $limit;
+
+                $line = substr($line, 0, $limit);
+
+                return trim(str_replace('namespace ', '', $line));
+            }
+        }
+
+        throw new RuntimeException("Unable to extract namespace from file '{$oneFile}'");
+    }
+
+    private function extractClassName(string $routineFile): string
+    {
+        return str_replace('.php', '', array_slice(explode('/', $routineFile), -1)[0]);
+    }
+
+    private function normalizeRoutineName(string $kebabCaseName): string
+    {
+        // make:user-controller -> [Make, User-controller]
+        $kebabCase = array_map(
+            fn($noh) => ucfirst($noh),
+            explode(':', $kebabCaseName)
+        );
+
+        $nameWithoutAColon = implode('', $kebabCase); // MakeUser-controller
+
+        // MakeUser-controller -> [MakeUser, Controller]
+        $pascalCase = array_map(
+            fn($noh) => ucfirst($noh),
+            explode('-', $nameWithoutAColon)
+        );
+
+        return implode('', $pascalCase); // MakeUserController
     }
 }

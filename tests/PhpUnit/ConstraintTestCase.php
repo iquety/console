@@ -29,13 +29,13 @@ class ConstraintTestCase extends TestCase
                 $this->setHowToUse('how to use description');
 
                 // Por padrao, um comando tem uma opcao '-h' pré adicioada
-                $this->addOption(new Option("-a", "--aaa", 'Option description', Option::OPTIONAL));
-                $this->addOption(new Option("-b", "--bbb", 'Option description', Option::OPTIONAL));
+                $this->addOption(new Option('-a', '--aaa', 'Option description', Option::OPTIONAL));
+                $this->addOption(new Option('-b', '--bbb', 'Option description', Option::OPTIONAL));
             }
 
             protected function handle(Arguments $arguments): void
             {
-                $this->line("teste");
+                $this->line('teste');
             }
         };
     }
@@ -43,8 +43,8 @@ class ConstraintTestCase extends TestCase
     protected function optionFactory(?int $type = null, ?string $defaultValue = null): Option
     {
         return new Option(
-            "-a",
-            "--aaa",
+            '-a',
+            '--aaa',
             'Descricao da opcao',
             $type ?? Option::REQUIRED | Option::VALUED,
             $defaultValue ?? null

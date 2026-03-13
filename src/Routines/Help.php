@@ -11,22 +11,22 @@ class Help extends Routine
 {
     protected function initialize(): void
     {
-        $this->setName("help");
-        $this->setDescription("Display help information");
+        $this->setName('help');
+        $this->setDescription('Display help information');
     }
 
     protected function handle(Arguments $arguments): void
     {
-        if ($this->getTerminal()->getHowToUse() !== "") {
-            $this->printSection("How to use:");
-            $this->line("  " . $this->getTerminal()->getHowToUse());
+        if ($this->getTerminal()->getHowToUse() !== '') {
+            $this->printSection('How to use:');
+            $this->line('  ' . $this->getTerminal()->getHowToUse());
         }
 
-        $this->printSection("Options:");
+        $this->printSection('Options:');
 
-        $this->printOption("-h", "--help", $this->getDescription());
+        $this->printOption('-h', '--help', $this->getDescription());
 
-        $this->printSection("Available routines:");
+        $this->printSection('Available routines:');
 
         $routineList = $this->getRoutineList();
 
@@ -59,10 +59,10 @@ class Help extends Routine
         $column = 20;
         $characters = mb_strlen($routine);
         $spacing = $characters < $column
-            ? str_repeat(" ", $column - $characters)
-            : " ";
+            ? str_repeat(' ', $column - $characters)
+            : ' ';
 
         $this->getTerminal()->factoryMessage("$routine ")->yellow();
-        $this->getTerminal()->factoryMessage(" " . $spacing . $description)->outputLn();
+        $this->getTerminal()->factoryMessage(' ' . $spacing . $description)->outputLn();
     }
 }

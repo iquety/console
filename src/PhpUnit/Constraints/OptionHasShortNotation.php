@@ -17,6 +17,11 @@ class OptionHasShortNotation extends Constraint
         $this->expected = $expected;
     }
 
+    public function toString(): string
+    {
+        return "has short notation '$this->expected'";
+    }
+
     protected function methodToComparison(): string
     {
         return 'getShortNotation';
@@ -45,10 +50,5 @@ class OptionHasShortNotation extends Constraint
     protected function failureDescription($other): string
     {
         return 'an option ' . $this->toString();
-    }
-
-    public function toString(): string
-    {
-        return "has short notation '$this->expected'";
     }
 }

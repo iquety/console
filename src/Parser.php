@@ -42,109 +42,6 @@ class Parser
         }
     }
 
-    private function composeValuesBetweenQuotes(): void
-    {
-        $this->standAloneOptions = (new Composition($this->standAloneOptions))->valores();
-    }
-
-    /**
-     * @param array<int,string> $argumentList
-     * @param int $index O indice da opção inválida
-     */
-    private function purgeInvalidOption(array &$argumentList, int $index): void
-    {
-        unset($argumentList[$index]);
-    }
-
-    /**
-     * @param array<int,string> $argumentList
-     * @param int $index O indice da opção avulsa
-     */
-    private function extractStandAloneOption(array &$argumentList, int $index): void
-    {
-        $this->standAloneOptions[] = $argumentList[$index];
-
-        unset($argumentList[$index]);
-    }
-
-    /**
-     * @param array<int,string> $argumentList
-     * @param int $index O indice da opção
-     */
-    private function extractOption(array &$argumentList, int $index): void
-    {
-        $notation = array_shift($argumentList);
-        $option = $this->getOption((string)$notation);
-        $mainNotation = $option->getMainNotation();
-
-        if ($option->isBoolean() === true || $option->isValued() === false) {
-            $this->flaggedOptions[$mainNotation] = '1';
-            return;
-        }
-
-        $compositeValue = [];
-        foreach ($argumentList as $index => $argument) {
-            // apenas valores são agrupados aqui
-            if ($this->isNotationFormat($argument) === true) {
-                break;
-            }
-
-            $lastValueNode = $this->isClosingArgument($argument);
-
-            $compositeValue[] = $this->removeQuotes($argument);
-
-            // remove o argumento da lista
-            unset($argumentList[$index]);
-
-            if ($lastValueNode === true) {
-                break;
-            }
-        }
-
-        if ($compositeValue === [] && $option->getDefaultValue() !== "") {
-            $compositeValue[] = $option->getDefaultValue();
-        }
-
-        if ($compositeValue === []) {
-            throw new OutputException("The '{$notation}' option requires a value");
-        }
-
-        $this->flaggedOptions[$mainNotation] = implode(" ", $compositeValue);
-    }
-
-    private function removeQuotes(string $argument): string
-    {
-        return trim(trim($argument, "'"), '"');
-    }
-
-    private function isClosingArgument(string $argument): bool
-    {
-        return str_ends_with($argument, "'") || str_ends_with($argument, '"');
-    }
-
-    private function isNotationFormat(string $argument): bool
-    {
-        return str_starts_with($argument, "-");
-    }
-
-    private function isValidNotation(string $argument): bool
-    {
-        return isset($this->notationMap[$argument]);
-    }
-
-    /** @param array<int,string> $argumentList */
-    private function currentIndex(array $argumentList): int
-    {
-        $chaves = array_keys($argumentList);
-        return $chaves[0] ?? -1;
-    }
-
-    private function getOption(string $notation): Option
-    {
-        $notation = $this->notationMap[$notation];
-        return $this->configuredOptions[$notation];
-    }
-
     public function parseStringArguments(string $argumentsDoTerminal): Arguments
     {
         return $this->parseArgumentList(explode(' ', $argumentsDoTerminal));
@@ -179,11 +76,114 @@ class Parser
         return new Arguments($this->notationMap, $this->flaggedOptions, $this->standAloneOptions);
     }
 
+    private function composeValuesBetweenQuotes(): void
+    {
+        $this->standAloneOptions = (new Composition($this->standAloneOptions))->valores();
+    }
+
+    /**
+     * @param array<int,string> $argumentList
+     * @param int $index O indice da opção inválida
+     */
+    private function purgeInvalidOption(array &$argumentList, int $index): void
+    {
+        unset($argumentList[$index]);
+    }
+
+    /**
+     * @param array<int,string> $argumentList
+     * @param int $index O indice da opção avulsa
+     */
+    private function extractStandAloneOption(array &$argumentList, int $index): void
+    {
+        $this->standAloneOptions[] = $argumentList[$index];
+
+        unset($argumentList[$index]);
+    }
+
+    /**
+     * @param array<int,string> $argumentList
+     * @param int $index O indice da opção
+     */
+    private function extractOption(array &$argumentList, int $index): void
+    {
+        $notation = array_shift($argumentList);
+        $option = $this->getOption((string) $notation);
+        $mainNotation = $option->getMainNotation();
+
+        if ($option->isBoolean() === true || $option->isValued() === false) {
+            $this->flaggedOptions[$mainNotation] = '1';
+            return;
+        }
+
+        $compositeValue = [];
+        foreach ($argumentList as $index => $argument) {
+            // apenas valores são agrupados aqui
+            if ($this->isNotationFormat($argument) === true) {
+                break;
+            }
+
+            $lastValueNode = $this->isClosingArgument($argument);
+
+            $compositeValue[] = $this->removeQuotes($argument);
+
+            // remove o argumento da lista
+            unset($argumentList[$index]);
+
+            if ($lastValueNode === true) {
+                break;
+            }
+        }
+
+        if ($compositeValue === [] && $option->getDefaultValue() !== '') {
+            $compositeValue[] = $option->getDefaultValue();
+        }
+
+        if ($compositeValue === []) {
+            throw new OutputException("The '{$notation}' option requires a value");
+        }
+
+        $this->flaggedOptions[$mainNotation] = implode(' ', $compositeValue);
+    }
+
+    private function removeQuotes(string $argument): string
+    {
+        return trim(trim($argument, "'"), '"');
+    }
+
+    private function isClosingArgument(string $argument): bool
+    {
+        return str_ends_with($argument, "'") || str_ends_with($argument, '"');
+    }
+
+    private function isNotationFormat(string $argument): bool
+    {
+        return str_starts_with($argument, '-');
+    }
+
+    private function isValidNotation(string $argument): bool
+    {
+        return isset($this->notationMap[$argument]);
+    }
+
+    /** @param array<int,string> $argumentList */
+    private function currentIndex(array $argumentList): int
+    {
+        $chaves = array_keys($argumentList);
+        return $chaves[0] ?? -1;
+    }
+
+    private function getOption(string $notation): Option
+    {
+        $notation = $this->notationMap[$notation];
+        return $this->configuredOptions[$notation];
+    }
+
     private function populateDefaultValues(): void
     {
         /** @var Option $option */
         foreach ($this->configuredOptions as $option) {
-            if ($option->getDefaultValue() === "") {
+            if ($option->getDefaultValue() === '') {
                 continue;
             }
 
@@ -225,15 +225,15 @@ class Parser
                 continue;
             }
 
-            $requireds[] = $option->getShortNotation() . "|" . $option->getLongNotation();
+            $requireds[] = $option->getShortNotation() . '|' . $option->getLongNotation();
         }
 
         if ($requireds === []) {
             return;
         }
 
-        $tip = implode(", ", $requireds);
+        $tip = implode(', ', $requireds);
 
-        throw new OutputException(sprintf("Required options: %s", $tip));
+        throw new OutputException(sprintf('Required options: %s', $tip));
     }
 }

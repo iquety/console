@@ -20,7 +20,7 @@ class Option
 
     private string $description = '';
 
-    private string $defaultValue = "";
+    private string $defaultValue = '';
 
     private bool $required = false;
 
@@ -36,7 +36,7 @@ class Option
         ?string $defaultValue = null
     ) {
         if ($shortNotation === null && $longNotation === null) {
-            throw new InvalidArgumentException("It is mandatory to provide at least one notation");
+            throw new InvalidArgumentException('It is mandatory to provide at least one notation');
         }
 
         $this->validateShortNotation($shortNotation);
@@ -45,7 +45,7 @@ class Option
         $this->shortNotation = $shortNotation ?? $longNotation;
         $this->longNotation  = $longNotation ?? $shortNotation;
         $this->description   = $description;
-        $this->defaultValue  = $defaultValue ?? "";
+        $this->defaultValue  = $defaultValue ?? '';
 
         $requiredTypes = [
             Option::REQUIRED,
@@ -73,25 +73,8 @@ class Option
             $this->boolean = true;
         }
 
-        if ($this->boolean === true && in_array($this->defaultValue, ["0", "1", ""]) === false) {
+        if ($this->boolean === true && in_array($this->defaultValue, ['0', '1', '']) === false) {
             throw new InvalidArgumentException("A boolean value must be '0' or '1'");
-        }
-    }
-
-    private function validateShortNotation(?string $shortNotation): void
-    {
-        if (
-            $shortNotation !== null
-            && (str_starts_with($shortNotation, "--") === true || str_starts_with($shortNotation, "-") === false)
-        ) {
-            throw new InvalidArgumentException("The short notation must start with a dash");
-        }
-    }
-
-    private function validateLongNotation(?string $longNotation): void
-    {
-        if ($longNotation !== null && str_starts_with($longNotation, "--") === false) {
-            throw new InvalidArgumentException("The long notation must start with two dashes");
         }
     }
 
@@ -138,5 +121,22 @@ class Option
     public function isValued(): bool
     {
         return $this->valued;
+    }
+
+    private function validateShortNotation(?string $shortNotation): void
+    {
+        if (
+            $shortNotation !== null
+            && (str_starts_with($shortNotation, '--') === true || str_starts_with($shortNotation, '-') === false)
+        ) {
+            throw new InvalidArgumentException('The short notation must start with a dash');
+        }
+    }
+
+    private function validateLongNotation(?string $longNotation): void
+    {
+        if ($longNotation !== null && str_starts_with($longNotation, '--') === false) {
+            throw new InvalidArgumentException('The long notation must start with two dashes');
+        }
     }
 }

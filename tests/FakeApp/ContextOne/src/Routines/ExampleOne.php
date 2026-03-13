@@ -13,13 +13,13 @@ class ExampleOne extends Routine
 {
     protected function initialize(): void
     {
-        $this->setName("example1");
+        $this->setName('example1');
         $this->setDescription("Run the 'example1' routine");
-        $this->setHowToUse("./example example1 [options]");
+        $this->setHowToUse('./example example1 [options]');
 
         $this->addOption(new Option(
-            "-v",
-            "--very-very-very-more-very-long-option",
+            '-v',
+            '--very-very-very-more-very-long-option',
             'Descricao opcao 1',
             Option::OPTIONAL
         ));

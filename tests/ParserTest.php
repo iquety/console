@@ -8,7 +8,6 @@ use Iquety\Console\Arguments;
 use Iquety\Console\Parser;
 use Iquety\Console\Option;
 use Iquety\Console\OutputException;
-use RuntimeException;
 
 /** @SuppressWarnings(PHPMD.TooManyPublicMethods) */
 class ParserTest extends TestCase
@@ -99,7 +98,7 @@ class ParserTest extends TestCase
     public function requiredBooleanOptionWithDefaultValue(): void
     {
         $interpretador = new Parser([
-            new Option('-a', '--aaa', 'Descricao opcao 1', Option::REQUIRED, "0"),
+            new Option('-a', '--aaa', 'Descricao opcao 1', Option::REQUIRED, '0'),
         ]);
 
         $argumentos = $interpretador->parseStringArguments('');
@@ -109,7 +108,7 @@ class ParserTest extends TestCase
         // - - -
 
         $interpretador = new Parser([
-            new Option('-a', '--aaa', 'Descricao opcao 1', Option::REQUIRED, "1"),
+            new Option('-a', '--aaa', 'Descricao opcao 1', Option::REQUIRED, '1'),
         ]);
 
         $argumentos = $interpretador->parseStringArguments('');
@@ -168,7 +167,7 @@ class ParserTest extends TestCase
             'DDD -b "Ricardo Pereira" XX -c "Arquitetura Limpa" Teste \'Portas e Adaptadores\''
         );
         $this->assertInstanceOf(Arguments::class, $argumentos);
-        $this->assertSame("", $argumentos->getOption('-a'));
+        $this->assertSame('', $argumentos->getOption('-a'));
         $this->assertSame('Ricardo Pereira', $argumentos->getOption('-b'));
         $this->assertSame('1', $argumentos->getOption('-c'));
         $this->assertSame('0', $argumentos->getOption('-d'));

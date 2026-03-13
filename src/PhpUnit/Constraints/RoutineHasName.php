@@ -17,6 +17,11 @@ class RoutineHasName extends Constraint
         $this->expected = $expected;
     }
 
+    public function toString(): string
+    {
+        return "has name '$this->expected'";
+    }
+
     protected function methodToComparison(): string
     {
         return 'getName';
@@ -45,10 +50,5 @@ class RoutineHasName extends Constraint
     protected function failureDescription($other): string
     {
         return 'an routine ' . $this->toString();
-    }
-
-    public function toString(): string
-    {
-        return "has name '$this->expected'";
     }
 }

@@ -17,13 +17,13 @@ class RoutineOutputTest extends TestCase
         $objeto = new class ($this->terminalFactory()) extends Routine {
             protected function initialize(): void
             {
-                $this->setName("routine-name");
-                $this->setDescription("Help information");
+                $this->setName('routine-name');
+                $this->setDescription('Help information');
             }
 
             protected function handle(Arguments $arguments): void
             {
-                $this->error("exibida mensagem de erro");
+                $this->error('exibida mensagem de erro');
             }
         };
 
@@ -33,7 +33,7 @@ class RoutineOutputTest extends TestCase
             "\nRoutine: routine-name",
             " Help information\n",
             "\nOptions:",
-            "-h, --help",
+            '-h, --help',
             "           Display routine help\n", // com espacos de alinhamento
         ];
 
@@ -48,12 +48,12 @@ class RoutineOutputTest extends TestCase
         $objeto = new class ($this->terminalFactory()) extends Routine {
             protected function initialize(): void
             {
-                $this->setName("routine-name");
-                $this->setDescription("Routine with long option");
+                $this->setName('routine-name');
+                $this->setDescription('Routine with long option');
 
                 $this->addOption(new Option(
-                    "-v",
-                    "--very-very-very-more-very-long-option",
+                    '-v',
+                    '--very-very-very-more-very-long-option',
                     'Descricao opcao 1',
                     Option::OPTIONAL
                 ));
@@ -61,7 +61,7 @@ class RoutineOutputTest extends TestCase
 
             protected function handle(Arguments $arguments): void
             {
-                $this->error("exibida mensagem de erro");
+                $this->error('exibida mensagem de erro');
             }
         };
 
@@ -71,9 +71,9 @@ class RoutineOutputTest extends TestCase
             "\nRoutine: routine-name",
             " Routine with long option\n",
             "\nOptions:",
-            "-h, --help",
+            '-h, --help',
             "           Display routine help\n",
-            "-v, --very-very-very-more-very-long-option",
+            '-v, --very-very-very-more-very-long-option',
             "  Descricao opcao 1\n", // sem espacos de alinhamento
         ];
 
@@ -89,14 +89,12 @@ class RoutineOutputTest extends TestCase
     public function executionWithTextPrint(): void
     {
         $objeto = new class ($this->terminalFactory()) extends Routine {
-            protected function initialize(): void
-            {
-            }
+            protected function initialize(): void {}
 
 
             protected function handle(Arguments $arguments): void
             {
-                $this->line("exibida mensagem de texto");
+                $this->line('exibida mensagem de texto');
             }
         };
 
@@ -109,13 +107,11 @@ class RoutineOutputTest extends TestCase
     public function executionWithErrorPrint(): void
     {
         $objeto = new class ($this->terminalFactory()) extends Routine {
-            protected function initialize(): void
-            {
-            }
+            protected function initialize(): void {}
 
             protected function handle(Arguments $arguments): void
             {
-                $this->error("exibida mensagem de erro");
+                $this->error('exibida mensagem de erro');
             }
         };
 
@@ -128,13 +124,11 @@ class RoutineOutputTest extends TestCase
     public function executionWithInfoPrint(): void
     {
         $objeto = new class ($this->terminalFactory()) extends Routine {
-            protected function initialize(): void
-            {
-            }
+            protected function initialize(): void {}
 
             protected function handle(Arguments $arguments): void
             {
-                $this->info("exibida mensagem informativa");
+                $this->info('exibida mensagem informativa');
             }
         };
 
@@ -147,13 +141,11 @@ class RoutineOutputTest extends TestCase
     public function executionWithWarningPrint(): void
     {
         $objeto = new class ($this->terminalFactory()) extends Routine {
-            protected function initialize(): void
-            {
-            }
+            protected function initialize(): void {}
 
             protected function handle(Arguments $arguments): void
             {
-                $this->warning("exibida mensagem de alerta");
+                $this->warning('exibida mensagem de alerta');
             }
         };
 

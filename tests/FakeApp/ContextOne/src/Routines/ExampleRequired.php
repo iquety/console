@@ -13,13 +13,13 @@ class ExampleRequired extends Routine
 {
     protected function initialize(): void
     {
-        $this->setName("example-required");
+        $this->setName('example-required');
         $this->setDescription("Run the 'example-required' routine");
-        $this->setHowToUse("./example example-required [options]");
+        $this->setHowToUse('./example example-required [options]');
 
         $this->addOption(new Option(
-            "-v",
-            "--very-very-very-more-very-long-option",
+            '-v',
+            '--very-very-very-more-very-long-option',
             'Descricao opcao 1',
             Option::REQUIRED | Option::VALUED
         ));

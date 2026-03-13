@@ -8,6 +8,10 @@ use Iquety\Console\Option;
 
 class OptionIsNotValued extends OptionIsValued
 {
+    public function toString(): string
+    {
+        return 'is not valued';
+    }
     /**
      * Avalia a restrição para o argumento $other.
      * @param Option $other
@@ -15,10 +19,5 @@ class OptionIsNotValued extends OptionIsValued
     protected function matches($other): bool
     {
         return parent::matches($other) === false;
-    }
-
-    public function toString(): string
-    {
-        return "is not valued";
     }
 }

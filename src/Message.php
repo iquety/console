@@ -20,50 +20,11 @@ class Message
 
     private bool $quietMode = false;
 
-    public function __construct(private string $message)
-    {
-    }
+    public function __construct(private string $message) {}
 
     public function enableQuietMode(): void
     {
         $this->quietMode = true;
-    }
-
-    private function lineBreak(): void
-    {
-        $this->lineEnd = "\n";
-    }
-
-    private function reset(): void
-    {
-        $this->icon   = "";
-        $this->prefix = "";
-        $this->sufix  = "";
-        $this->lineEnd     = "";
-    }
-
-    private function wrapperBlue(): void
-    {
-        $this->prefix = "\033[0;34m";
-        $this->sufix = "\033[0m";
-    }
-
-    private function wrapperGreen(): void
-    {
-        $this->prefix = "\033[0;32m";
-        $this->sufix = "\033[0m";
-    }
-
-    private function wrapperRed(): void
-    {
-        $this->prefix = "\033[0;31m";
-        $this->sufix = "\033[0m";
-    }
-
-    private function wrapperYellow(): void
-    {
-        $this->prefix = "\033[0;33m";
-        $this->sufix = "\033[0m";
     }
 
     public function blue(): void
@@ -116,7 +77,7 @@ class Message
 
     public function error(): void
     {
-        $this->icon = "✗ ";
+        $this->icon = '✗ ';
         $this->red();
     }
 
@@ -128,7 +89,7 @@ class Message
 
     public function info(): void
     {
-        $this->icon = "➜ ";
+        $this->icon = '➜ ';
         $this->blue();
     }
 
@@ -140,7 +101,7 @@ class Message
 
     public function success(): void
     {
-        $this->icon = "✔ ";
+        $this->icon = '✔ ';
         $this->green();
     }
 
@@ -152,7 +113,7 @@ class Message
 
     public function warning(): void
     {
-        $this->icon = "✱ ";
+        $this->icon = '✱ ';
         $this->yellow();
     }
 
@@ -180,5 +141,42 @@ class Message
     {
         $this->lineBreak();
         $this->output();
+    }
+
+    private function lineBreak(): void
+    {
+        $this->lineEnd = "\n";
+    }
+
+    private function reset(): void
+    {
+        $this->icon   = '';
+        $this->prefix = '';
+        $this->sufix  = '';
+        $this->lineEnd     = '';
+    }
+
+    private function wrapperBlue(): void
+    {
+        $this->prefix = "\033[0;34m";
+        $this->sufix = "\033[0m";
+    }
+
+    private function wrapperGreen(): void
+    {
+        $this->prefix = "\033[0;32m";
+        $this->sufix = "\033[0m";
+    }
+
+    private function wrapperRed(): void
+    {
+        $this->prefix = "\033[0;31m";
+        $this->sufix = "\033[0m";
+    }
+
+    private function wrapperYellow(): void
+    {
+        $this->prefix = "\033[0;33m";
+        $this->sufix = "\033[0m";
     }
 }

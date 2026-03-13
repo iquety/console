@@ -9,6 +9,10 @@ use PHPUnit\Framework\Constraint\Constraint;
 
 class OptionIsRequired extends Constraint
 {
+    public function toString(): string
+    {
+        return 'is required';
+    }
     protected function methodToComparison(): string
     {
         return 'isRequired';
@@ -37,10 +41,5 @@ class OptionIsRequired extends Constraint
     protected function failureDescription($other): string
     {
         return 'an option ' . $this->toString();
-    }
-
-    public function toString(): string
-    {
-        return "is required";
     }
 }

@@ -6,13 +6,12 @@ namespace Iquety\Console\PhpUnit\Constraints;
 
 class OptionHasDefaultValue extends OptionHasShortNotation
 {
-    protected function methodToComparison(): string
-    {
-        return 'getDefaultValue';
-    }
-
     public function toString(): string
     {
         return "has default value '$this->expected'";
+    }
+    protected function methodToComparison(): string
+    {
+        return 'getDefaultValue';
     }
 }
