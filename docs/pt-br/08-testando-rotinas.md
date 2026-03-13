@@ -1,6 +1,6 @@
 # Testando rotinas
 
-[◂ A biblioteca de mensagens](07-biblioteca-de-mensagens.md) | [Sumário da Documentação](indice.md) | [Evoluindo a biblioteca ▸](99-evoluindo-a-biblioteca.md)
+[◂ A biblioteca de mensagens](07-biblioteca-de-mensagens.md) | [Sumário da Documentação](indice.md) | [Evoluindo a biblioteca ▸](99-evoluindo.md)
 -- | -- | --
 
 ## 1. Usando asserções especiais para PHPUnit
@@ -29,5 +29,5 @@ As seguintes asserções adicionais estarão disponíveis para uso:
 - assertOptionIsNotRequired
 - assertOptionIsNotValued
 
-[◂ A biblioteca de mensagens](07-biblioteca-de-mensagens.md) | [Sumário da Documentação](indice.md) | [Evoluindo a biblioteca ▸](99-evoluindo-a-biblioteca.md)
+[◂ A biblioteca de mensagens](07-biblioteca-de-mensagens.md) | [Sumário da Documentação](indice.md) | [Evoluindo a biblioteca ▸](99-evoluindo.md)
 -- | -- | --

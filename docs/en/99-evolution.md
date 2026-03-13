@@ -1,6 +1,7 @@
 # Evolving the library
 
---page-nav--
+[◂ Testing Routines](08-testing-routines.md) | [Documentation Summary ▸](index.md)
+-- | --
 
 ## 1. Infrastructure
 
@@ -22,7 +23,7 @@ These are the following tools:
 
 - [PHP Unit](https://phpunit.de)
 - [PHP Stan](https://phpstan.org)
-- [PHP Code Sniffer](https://github.com/squizlabs/PHP_CodeSniffer)
+- [PHP CS Fixer](https://cs.symfony.com/doc/usage.html)
 - [PHP MD](https://phpmd.org)
 - [Super Linter](https://github.com/super-linter/super-linter)
 
@@ -53,8 +54,11 @@ they can be carried out individually:
 ```
 
 ```bash
-# Run Code Sniffer
-./composer psr
+# Run pattern check
+./composer psr-check
+
+# Run fixer
+./composer psr-fix
 ```
 
 ### 2.3. Automated Tests
@@ -79,4 +83,5 @@ browsable documentation in the `docs` directory:
 composer docmap
 ```
 
---page-nav--
+[◂ Testing Routines](08-testing-routines.md) | [Documentation Summary ▸](index.md)
+-- | --
