@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "112a00b4fd5e6aa1bc34fa6f26fec742",
+    "content-hash": "2324df4e743269fa21978aa3167d69b6",
     "packages": [
         {
             "name": "iquety/security",
@@ -5148,7 +5148,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "codacy/coverage": 20
+        "codacy/coverage": 20,
+        "iquety/security": 0
     },
     "prefer-stable": true,
     "prefer-lowest": false,

@@ -4,6 +4,7 @@
     "description": "Toolkit for implementing PHP-based terminal routines",
     "keywords": ["framework", "tool", "console"],
     "license": "MIT",
+    "minimum-stability": "stable",
     "require": {
         "php": "^8.4.0",
         "iquety/security": "@stable"
@@ -31,7 +32,6 @@
         "preferred-install": "dist",
         "sort-packages": true
     },
-    "minimum-stability": "stable",
     "prefer-stable": true,
     "scripts" : {
         "example": "./example",
