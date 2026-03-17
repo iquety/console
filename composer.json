@@ -6,7 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.4.0",
-        "iquety/security": "dev-main"
+        "iquety/security": "*"
     },
     "require-dev": {
         "codacy/coverage": "dev-master",
@@ -31,7 +31,7 @@
         "preferred-install": "dist",
         "sort-packages": true
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "scripts" : {
         "example": "./example",
